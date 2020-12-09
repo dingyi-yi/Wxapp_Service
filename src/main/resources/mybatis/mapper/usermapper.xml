@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Wxapp.mapper.userMapper">
+    <select id="queryUserByOpenId" resultType="UserAccount">
+        select * from WxUser where OpenId = #{OpenId}
+    </select>
+
+    <insert id="addUser" parameterType="UserAccount">
+        insert into WxUser  values (#{OpenId},#{lasttime})
+    </insert>
+
+    <update id="updatetime" parameterType="UserAccount">
+        update WxUser set lasttime=#{lasttime} where Openid=#{OpenId}
+    </update>
+</mapper>

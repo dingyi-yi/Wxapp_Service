@@ -1,0 +1,17 @@
+
+#微信小程序的配置
+wechat:
+ AppID: wxe1987346697e9ca6
+ AppSecret: c6fc253e77feebf2e6f75aa9e44aa00f
+ WxURL: https://api.weixin.qq.com/sns/jscode2session?
+
+spring:
+ datasource:
+  url: jdbc:sqlserver://localhost:64679;DatabaseName=Wxapp_Service
+  driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  username: sa
+  password: 123456
+
+mybatis:
+  type-aliases-package: com.Wxapp.dao
+  mapper-locations: classpath:mybatis/mapper/*.xml

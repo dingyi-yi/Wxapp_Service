@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Wxapp.mapper.comQualificationMaper">
+    <select id="QByRating" resultType="ComQualification">
+        select *from comQualification where scope like '%${EleAppliance}%'  ORDER BY  Rating DESC
+    </select>
+
+    <select id="QByDistance" resultType="ComQualification">
+        DECLARE @geog2 GEOGRAPHY
+        Select @geog2=geography::STGeomFromText('POINT (${longitude} ${latitude})', 4326)
+        SELECT *,
+        geography::Point([Lat], [Lon], 4326).STDistance(@geog2) / 1000 AS [distance]
+        FROM comQualification
+        where scope like '%${EleAppliance}%'
+        order by distance asc
+    </select>
+
+    <select id="QBySynthesize" resultType="ComQualification">
+        DECLARE @geog2 GEOGRAPHY
+        Select @geog2=geography::STGeomFromText('POINT (${longitude} ${latitude})', 4326)
+        SELECT bName,Rating,
+        geography::Point([Lat], [Lon], 4326).STDistance(@geog2) /1000 AS [distance],
+        (geography::Point([Lat], [Lon], 4326).STDistance(@geog2) / 1000)/(Rating+13) AS [Synthesize]
+        FROM comQualification
+        where scope like '%${EleAppliance}%' and Rating>0
+        order by Synthesize ASC
+
+    </select>
+
+
+</mapper>
