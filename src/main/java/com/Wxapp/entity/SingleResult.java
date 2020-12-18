@@ -1,9 +1,12 @@
 package com.Wxapp.entity;
 
+import com.Wxapp.dao.UserAccount;
+
 public class SingleResult<S> {
    int Code;
    S Token;
    S Message;
+   UserAccount user;
 
     public int getCode() {
         return Code;
@@ -27,5 +30,13 @@ public class SingleResult<S> {
 
     public void setMessage(S message) {
         Message = message;
+    }
+
+    public UserAccount getUser() {
+        return user;
+    }
+
+    public void setUser(UserAccount user) {
+        this.user = user;
     }
 }

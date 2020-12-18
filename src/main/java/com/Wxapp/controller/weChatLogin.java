@@ -40,6 +40,7 @@ public class weChatLogin {
             ob.put("code",code);
             String token= TokenUtils.getToken(ob);
 
+            result.setUser(user);
             result.setCode(1);
             result.setMessage("登陆成功");
             result.setToken(token);

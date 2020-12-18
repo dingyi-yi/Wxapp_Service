@@ -6,6 +6,8 @@ public class UserAccount {
 
     String OpenId;
     Date lasttime;
+    String WxNmae;
+    String HeadPortrait;
 
     public String getOpenid() {
         return OpenId;
@@ -23,5 +25,20 @@ public class UserAccount {
         this.lasttime = lasttime;
     }
 
+    public String getWxNmae() {
+        return WxNmae;
+    }
+
+    public void setWxNmae(String wxNmae) {
+        WxNmae = wxNmae;
+    }
+
+    public String getHeadPortrait() {
+        return HeadPortrait;
+    }
+
+    public void setHeadPortrait(String headPortrait) {
+        HeadPortrait = headPortrait;
+    }
 
 }
