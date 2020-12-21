@@ -38,4 +38,12 @@ public interface comQualificationMaper {
      */
     List<ComQualification> QBySynthesize(String EleAppliance,double longitude,double latitude);
 
+
+    /**
+     * 添加商家
+     * @param comQualification
+     * @return
+     */
+    int InsertCom(ComQualification comQualification);
+
 }

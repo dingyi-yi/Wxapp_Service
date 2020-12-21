@@ -43,7 +43,7 @@ public class PostOrderService {
         UntreatedOrder order=new UntreatedOrder();
         //生成订单编号
         String OrderId= UUID.randomUUID().toString();
-        order.setOpenId(user.getOpenid());
+        order.setOpenId(user.getOpenId());
         order.setOrderId(OrderId);
         order.setPAddress(data.get("PAddress").toString());
         order.setPhone(data.get("Phone").toString());
@@ -68,7 +68,7 @@ public class PostOrderService {
         result.setRepMess("发布成功");
         JSONObject da=new JSONObject();
         da.put("OrderId",OrderId);
-        result.setData(da);
+        result.setJsonData(da);
 
 
         return result;

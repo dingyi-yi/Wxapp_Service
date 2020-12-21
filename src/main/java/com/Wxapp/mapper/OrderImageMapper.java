@@ -4,6 +4,8 @@ import com.Wxapp.dao.OrderImage;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * @author ding
@@ -18,5 +20,12 @@ public interface OrderImageMapper {
      * @return
      */
     int insertImage(OrderImage orderimage);
+
+    /**
+     * 查询订单图片
+     * @param OrderId 订单编号
+     * @return
+     */
+    List<OrderImage> inquireOrderImage(String OrderId);
 
 }

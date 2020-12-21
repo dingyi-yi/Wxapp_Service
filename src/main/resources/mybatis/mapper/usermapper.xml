@@ -8,10 +8,14 @@
     </select>
 
     <insert id="addUser" parameterType="UserAccount">
-        insert into WxUser  values (#{OpenId},#{lasttime},' ',' ')
+        insert into WxUser  values (#{OpenId},#{lasttime},' ',' ',0)
     </insert>
 
     <update id="updatetime" parameterType="UserAccount">
         update WxUser set lasttime=#{lasttime} where Openid=#{OpenId}
+    </update>
+
+    <update id="updateStatus" parameterType="UserAccount">
+        update WxUser set Status=#{Status} where Openid=#{OpenId}
     </update>
 </mapper>

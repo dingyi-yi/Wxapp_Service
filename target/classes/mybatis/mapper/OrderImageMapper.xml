@@ -5,7 +5,10 @@
 <mapper namespace="com.Wxapp.mapper.OrderImageMapper">
 
     <insert id="insertImage" parameterType="OrderImage">
-        insert into OrderImage values(#{OpenId},#{OrderId},#{file})
+        insert into OrderImage values(#{OpenId},#{OrderId},#{OrderImage})
     </insert>
 
+    <select id="inquireOrderImage" resultType="OrderImage">
+        select* from OrderImage where OrderId=#{OrderId}
+    </select>
 </mapper>

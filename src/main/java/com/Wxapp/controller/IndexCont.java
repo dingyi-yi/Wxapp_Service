@@ -79,10 +79,7 @@ public class IndexCont {
     @ResponseBody
     @RequestMapping(value = "PostActivity",method = RequestMethod.POST)
     public Result PostActivity(@RequestHeader("token") String token, @RequestBody JSONObject data){
-        Result poresult=new Result();
-        poresult.setCode(0);
-        poresult.setRepMess("发布失败");
-        return poresult;
+        return null;
     }
 
 
@@ -93,10 +90,8 @@ public class IndexCont {
     @ResponseBody
     @RequestMapping(value = "AdoptOrder",method = RequestMethod.POST)
     public Result AdoptOrder(@RequestHeader("token") String token, @RequestBody JSONObject data){
-        Result poresult=new Result();
-        poresult.setCode(0);
-        poresult.setRepMess("发布失败");
-        return poresult;
+
+        return null;
     }
 
 

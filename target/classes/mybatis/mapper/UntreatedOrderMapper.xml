@@ -9,4 +9,7 @@
                                             #{ReleaseTime},#{ExpectTime},#{Describe})
     </insert>
 
+    <select id="InquireOrder" resultType="UntreatedOrder">
+        select *from UntreatedOrder where OpenId=#{OpenId}
+    </select>
 </mapper>

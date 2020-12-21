@@ -8,13 +8,25 @@ public class UserAccount {
     Date lasttime;
     String WxNmae;
     String HeadPortrait;
+    int Status;
 
-    public String getOpenid() {
+    public UserAccount(String openId, Date lasttime, String wxNmae, String headPortrait, int status) {
+        OpenId = openId;
+        this.lasttime = lasttime;
+        WxNmae = wxNmae;
+        HeadPortrait = headPortrait;
+        Status = status;
+    }
+
+    public UserAccount() {
+    }
+
+    public String getOpenId() {
         return OpenId;
     }
 
-    public void setOpenid(String openid) {
-        this.OpenId = openid;
+    public void setOpenId(String openId) {
+        OpenId = openId;
     }
 
     public Date getLasttime() {
@@ -41,4 +53,11 @@ public class UserAccount {
         HeadPortrait = headPortrait;
     }
 
+    public int getStatus() {
+        return Status;
+    }
+
+    public void setStatus(int status) {
+        Status = status;
+    }
 }

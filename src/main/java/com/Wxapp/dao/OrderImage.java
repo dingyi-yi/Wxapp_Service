@@ -11,12 +11,12 @@ import java.io.File;
 public class OrderImage {
     String OpenId;
     String OrderId;
-    byte[] file;
+    byte[] OrderImage;
 
-    public OrderImage(String openId, String orderId, byte[] file) {
+    public OrderImage(String openId, String orderId, byte[] orderImage) {
         OpenId = openId;
         OrderId = orderId;
-        this.file = file;
+        OrderImage = orderImage;
     }
 
     public OrderImage() {
@@ -38,11 +38,11 @@ public class OrderImage {
         OrderId = orderId;
     }
 
-    public byte[] getFile() {
-        return file;
+    public byte[] getOrderImage() {
+        return OrderImage;
     }
 
-    public void setFile(byte[] file) {
-        this.file = file;
+    public void setOrderImage(byte[] orderImage) {
+        OrderImage = orderImage;
     }
 }

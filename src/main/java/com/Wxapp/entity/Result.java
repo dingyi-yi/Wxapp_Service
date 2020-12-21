@@ -2,21 +2,25 @@ package com.Wxapp.entity;
 
 import com.alibaba.fastjson.JSONObject;
 
+import java.util.List;
+
 /**
  * 请求返回结果，
  */
-public class Result {
+public class Result<E> {
     int Code;
     String RepMess;
-    JSONObject data;
+    JSONObject JsonData;
+    List<E> ListData;
 
-    public Result() {
-    }
-
-    public Result(int code, String repMess, JSONObject data) {
+    public Result(int code, String repMess, JSONObject jsonData, List<E> listData) {
         Code = code;
         RepMess = repMess;
-        this.data = data;
+        JsonData = jsonData;
+        ListData = listData;
+    }
+
+    public Result() {
     }
 
     public int getCode() {
@@ -35,12 +39,20 @@ public class Result {
         RepMess = repMess;
     }
 
-    public JSONObject getData() {
-        return data;
+    public JSONObject getJsonData() {
+        return JsonData;
     }
 
-    public void setData(JSONObject data) {
-        this.data = data;
+    public void setJsonData(JSONObject jsonData) {
+        JsonData = jsonData;
+    }
+
+    public List<E> getListData() {
+        return ListData;
+    }
+
+    public void setListData(List<E> listData) {
+        ListData = listData;
     }
 
     @Override
@@ -48,7 +60,8 @@ public class Result {
         return "Result{" +
                 "Code=" + Code +
                 ", RepMess='" + RepMess + '\'' +
-                ", data=" + data +
+                ", JsonData=" + JsonData +
+                ", ListData=" + ListData +
                 '}';
     }
 }

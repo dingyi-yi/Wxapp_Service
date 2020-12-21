@@ -45,7 +45,7 @@ public class UnloadImageService {
             try {
                 //获取文件字节
                 byte[] filebyte=file.getBytes();
-                OrderImage orderimage=new OrderImage(user.getOpenid(),OrderId,filebyte);
+                OrderImage orderimage=new OrderImage(user.getOpenId(),OrderId,filebyte);
                 //写入数据库
                 OrdImgMapper.insertImage(orderimage);
             } catch (IOException e) {

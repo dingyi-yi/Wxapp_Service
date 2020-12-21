@@ -1,21 +1,24 @@
 package com.Wxapp.dao;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class ComQualification {
     String bName;
     String bAdd;
     String legalRepre;
     String ship;
     String LicenseNo;
-    String Rating;
+    int Rating;
     String specialBrand;
     String scope;
     String remarks;
-    double longitude;
-    double latitude;
+    double lon;
+    double lat;
     double distance;
 
     public ComQualification(String bName, String bAdd, String legalRepre, String ship, String
-                            licenseNo, String rating, String specialBrand,
+                            licenseNo, int rating, String specialBrand,
                             String scope, String remarks, double longitude, double latitude,
                             double distance) {
         this.bName = bName;
@@ -27,13 +30,13 @@ public class ComQualification {
         this.specialBrand = specialBrand;
         this.scope = scope;
         this.remarks = remarks;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        this.lon = longitude;
+        this.lat = latitude;
         this.distance=distance;
    }
 
     public ComQualification(String bName, String bAdd, String legalRepre, String ship, String licenseNo,
-                            String rating, String specialBrand, String scope, String remarks,
+                            int rating, String specialBrand, String scope, String remarks,
                             double longitude, double latitude) {
         this.bName = bName;
         this.bAdd = bAdd;
@@ -44,8 +47,8 @@ public class ComQualification {
         this.specialBrand = specialBrand;
         this.scope = scope;
         this.remarks = remarks;
-        this.longitude = longitude;
-        this.latitude = latitude;
+        this.lon = longitude;
+        this.lat = latitude;
     }
 
     public ComQualification() {
@@ -90,11 +93,11 @@ public class ComQualification {
         LicenseNo = licenseNo;
     }
 
-    public String getRating() {
+    public int getRating() {
         return Rating;
     }
 
-    public void setRating(String rating) {
+    public void setRating(int rating) {
         Rating = rating;
     }
 
@@ -122,13 +125,21 @@ public class ComQualification {
         this.remarks = remarks;
     }
 
-    public double getLongitude() { return longitude; }
+    public double getLon() {
+        return lon;
+    }
 
-    public void setLongitude(double longitude) { this.longitude = longitude; }
+    public void setLon(double lon) {
+        this.lon = lon;
+    }
 
-    public double getLatitude() { return latitude; }
+    public double getLat() {
+        return lat;
+    }
 
-    public void setLatitude(double latitude) { this.latitude = latitude; }
+    public void setLat(double lat) {
+        this.lat = lat;
+    }
 
     public double getDistance() { return distance; }
 
@@ -146,8 +157,8 @@ public class ComQualification {
                 ", specialBrand='" + specialBrand + '\'' +
                 ", scope='" + scope + '\'' +
                 ", remarks='" + remarks + '\'' +
-                ", longitude='" + longitude + '\'' +
-                ", latitude='" + latitude + '\'' +
+                ", longitude='" + lon + '\'' +
+                ", latitude='" + lat + '\'' +
                 ", distance='" + distance + '\'' +
                 '}';
     }

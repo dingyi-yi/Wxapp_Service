@@ -7,7 +7,7 @@ wechat:
 
 spring:
  datasource:
-  url: jdbc:sqlserver://localhost:64679;DatabaseName=Wxapp_Service
+  url: jdbc:sqlserver://localhost:1433;DatabaseName=Wxapp_Service
   driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
   username: sa
   password: 123456

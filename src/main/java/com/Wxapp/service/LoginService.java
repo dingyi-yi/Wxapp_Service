@@ -38,7 +38,7 @@ public class LoginService {
             if(null==user ){
                 // 不存在，就是第一次登录：新建用户信息
                 user=new UserAccount();
-                user.setOpenid(result.get("openid").toString());
+                user.setOpenId(result.get("openid").toString());
                 user.setLasttime(new Date());
                 usermapper.addUser(user);
                 result.put("user",user);

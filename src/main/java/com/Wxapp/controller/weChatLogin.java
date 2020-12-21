@@ -36,7 +36,7 @@ public class weChatLogin {
             //允许登陆，下发token
             UserAccount user= (UserAccount) loginresult.get("user");
             JSONObject ob=new JSONObject();
-            ob.put("openid",user.getOpenid());
+            ob.put("openid",user.getOpenId());
             ob.put("code",code);
             String token= TokenUtils.getToken(ob);
 
