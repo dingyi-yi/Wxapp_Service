@@ -6,10 +6,25 @@
 
     <insert id="InsertOrder" parameterType="UntreatedOrder">
         insert into UntreatedOrder values (#{OpenId},#{OrderId},#{PAddress},#{Phone},#{Kind},#{ServiceType},
-                                            #{ReleaseTime},#{ExpectTime},#{Describe})
+                                            #{ReleaseTime},#{ExpectTime},#{Describe},#{Lon},#{Lat})
     </insert>
 
     <select id="InquireOrder" resultType="UntreatedOrder">
         select *from UntreatedOrder where OpenId=#{OpenId}
     </select>
+
+    <select id="iquireByScope" resultType="UntreatedOrder">
+        select *from UntreatedOrder where charindex(ltrim(rtrim(Kind)),#{scope})>0 and ExpectTime>#{date}
+    </select>
+
+    <select id="inquireByStoretype" resultType="UntreatedOrder">
+        select *from UntreatedOrder where charindex(ltrim(rtrim(Kind)),#{scope})>0 and Kind like '%${storetype}%' and ExpectTime>#{date}
+    </select>
+
+
+    <select id="inquireByTime" resultType="UntreatedOrder">
+        select *from UntreatedOrder where charindex(ltrim(rtrim(Kind)),#{scope})>0 and ExpectTime>#{date} order by ReleaseTime desc
+    </select>
+
+
 </mapper>

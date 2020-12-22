@@ -4,10 +4,7 @@ import com.Wxapp.dao.UserAccount;
 import com.Wxapp.entity.InLoadResult;
 import com.Wxapp.entity.OrderMaResult;
 import com.Wxapp.entity.Result;
-import com.Wxapp.service.CheckTokenService;
-import com.Wxapp.service.OrderMService;
-import com.Wxapp.service.PostOrderService;
-import com.Wxapp.service.UnloadImageService;
+import com.Wxapp.service.*;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +28,7 @@ public class IndexCont {
      * @param token
      * @return 页面默认数据
      */
+
     @ResponseBody
     @RequestMapping(value = "index",method = RequestMethod.POST)
     public InLoadResult ipageload(@RequestHeader("token")String token){
@@ -78,7 +76,7 @@ public class IndexCont {
      */
     @ResponseBody
     @RequestMapping(value = "PostActivity",method = RequestMethod.POST)
-    public Result PostActivity(@RequestHeader("token") String token, @RequestBody JSONObject data){
+    public Result postActivity(@RequestHeader("token") String token, @RequestBody JSONObject data){
         return null;
     }
 
@@ -87,14 +85,33 @@ public class IndexCont {
      * 在线接单
      * @return
      */
+    @Autowired
+    AdoptOrderService adoptOrderService=new AdoptOrderService();
     @ResponseBody
     @RequestMapping(value = "AdoptOrder",method = RequestMethod.POST)
-    public Result AdoptOrder(@RequestHeader("token") String token, @RequestBody JSONObject data){
-
-        return null;
+    public Result adoptOrder(@RequestHeader("token") String token, @RequestBody JSONObject data){
+        Result result=adoptOrderService.service(token,data);
+        return result;
     }
 
 
+    /**
+     * 接单服务时，获取订单列表,以及在线接单时，查询订单服务
+     * @param token
+     * @param data
+     * @return
+     */
+    @Autowired
+    OrderInquiryService orderInquiryService=new OrderInquiryService();
+    @ResponseBody
+    @RequestMapping(value = "GainOrder",method = RequestMethod.POST)
+    public Result GainOrder(@RequestHeader("token") String token, @RequestBody JSONObject data)
+    {
+        Result result=orderInquiryService.service(token,data,2);
+        return result;
+    }
+
+    
     /**
      * 上传图片
      * @param token

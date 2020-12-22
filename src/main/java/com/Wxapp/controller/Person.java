@@ -26,8 +26,8 @@ public class Person {
     @RequestMapping(value = "OrderInquiry",method = RequestMethod.POST)
     public Result orderInquiry(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
-        Result result=orderInquiryService.Service(token,data);
-        return result;
+        //Result result=orderInquiryService.Service(token,data);
+        return null;
     }
 
 

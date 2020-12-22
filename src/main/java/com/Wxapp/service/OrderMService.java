@@ -2,12 +2,15 @@ package com.Wxapp.service;
 
 import com.Wxapp.dao.ComQualification;
 import com.Wxapp.dao.UserAccount;
+import com.Wxapp.dao.UserPortrait;
 import com.Wxapp.entity.OrderMaResult;
+import com.Wxapp.mapper.UserPortraitMapper;
 import com.Wxapp.mapper.comQualificationMaper;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,6 +24,9 @@ public class OrderMService {
 
     @Autowired
     CheckTokenService checktoken=new CheckTokenService();
+
+    @Autowired
+    UserPortraitMapper userPortraitMapper;
 
 
     public OrderMaResult OrderService(String token, JSONObject data){
@@ -40,6 +46,21 @@ public class OrderMService {
             orderresult.setRepMess("token无效,重新登陆");
             orderresult.setRepData(null);
         }else {
+
+            /**
+             * 更新用户画像表中，用户维修数据
+             */
+            //获取用户画像
+            UserPortrait userPortrait=userPortraitMapper.selectByOpenid(user.getOpenId());
+            //更新数据
+            userPortrait.setMaintain(1);
+            userPortrait.setMaintainDate(new Date());
+            userPortrait.setMaintainContent(EleAppliance);
+            userPortrait.setMaintainNumber(userPortrait.getMaintainNumber()+1);
+            //将数据更新到数据库
+            userPortraitMapper.updateMaintain(userPortrait);
+
+
             if (ship.equals("1") || longitude==null || latitude==null){
                 //如果选择评分优先时，或者没有经纬度时，则评分优先
                 List<ComQualification> U=GradeFist(EleAppliance);

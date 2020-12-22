@@ -8,6 +8,7 @@ import java.util.List;
 
 /**
  * @author ding
+ * 家电维修企业资质数据库接口
  */
 @Mapper
 @Repository
@@ -45,5 +46,12 @@ public interface comQualificationMaper {
      * @return
      */
     int InsertCom(ComQualification comQualification);
+
+    /**
+     * 根据openid查询企业
+     * @param Openid
+     * @return
+     */
+    ComQualification inquireByOpenid(String Openid);
 
 }

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ComQualification {
+    String OpenId;
     String bName;
     String bAdd;
     String legalRepre;
@@ -17,10 +18,10 @@ public class ComQualification {
     double lat;
     double distance;
 
-    public ComQualification(String bName, String bAdd, String legalRepre, String ship, String
-                            licenseNo, int rating, String specialBrand,
-                            String scope, String remarks, double longitude, double latitude,
-                            double distance) {
+    public ComQualification(String openId, String bName, String bAdd, String legalRepre, String ship,
+                            String licenseNo, int rating, String specialBrand,
+                            String scope, String remarks, double lon, double lat, double distance) {
+        OpenId = openId;
         this.bName = bName;
         this.bAdd = bAdd;
         this.legalRepre = legalRepre;
@@ -30,29 +31,22 @@ public class ComQualification {
         this.specialBrand = specialBrand;
         this.scope = scope;
         this.remarks = remarks;
-        this.lon = longitude;
-        this.lat = latitude;
-        this.distance=distance;
-   }
-
-    public ComQualification(String bName, String bAdd, String legalRepre, String ship, String licenseNo,
-                            int rating, String specialBrand, String scope, String remarks,
-                            double longitude, double latitude) {
-        this.bName = bName;
-        this.bAdd = bAdd;
-        this.legalRepre = legalRepre;
-        this.ship = ship;
-        LicenseNo = licenseNo;
-        Rating = rating;
-        this.specialBrand = specialBrand;
-        this.scope = scope;
-        this.remarks = remarks;
-        this.lon = longitude;
-        this.lat = latitude;
+        this.lon = lon;
+        this.lat = lat;
+        this.distance = distance;
     }
 
     public ComQualification() {
     }
+
+    public String getOpenId() {
+        return OpenId;
+    }
+
+    public void setOpenId(String openId) {
+        OpenId = openId;
+    }
+
     public String getbName() {
         return bName;
     }

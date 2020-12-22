@@ -39,6 +39,7 @@ public class PostOrderService {
             return result;
         }
 
+
         //获取相关参数
         UntreatedOrder order=new UntreatedOrder();
         //生成订单编号
@@ -59,8 +60,16 @@ public class PostOrderService {
         calendar.setTime(ReleaseTime);
         calendar.add(Calendar.DATE,et);
         Date ExpectTime=calendar.getTime();
+        //订单发布时间
         order.setReleaseTime(ReleaseTime);
+        //订单结束时间
         order.setExpectTime(ExpectTime);
+        //订单发布时的经度
+        order.setLon((Double) data.get("Longitude"));
+        //订单发布时的纬度
+        order.setLat((Double) data.get("Latitude"));
+
+
         //插入数据库
         UndisOrderMapper.InsertOrder(order);
 

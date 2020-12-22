@@ -30,7 +30,7 @@
     </select>
 
     <insert id="insertCom" parameterType="ComQualification">
-        insert into comQualification values(#{bName},#{bAdd},#{legalRepre},#{ship},#{LicenseNo},#{Rating},#{specialBrand},#{scope},
+        insert into comQualification values(#{OpenId},#{bName},#{bAdd},#{legalRepre},#{ship},#{LicenseNo},#{Rating},#{specialBrand},#{scope},
         #{remarks},#{lon},#{lat})
     </insert>
 

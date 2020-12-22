@@ -3,6 +3,7 @@ package com.Wxapp.service;
 import com.Wxapp.dao.ComQualification;
 import com.Wxapp.dao.UserAccount;
 import com.Wxapp.entity.Result;
+import com.Wxapp.mapper.UserPortraitMapper;
 import com.Wxapp.mapper.comQualificationMaper;
 import com.Wxapp.mapper.userMapper;
 import com.alibaba.fastjson.JSONObject;
@@ -25,6 +26,9 @@ public class LicencedHouseService {
     @Autowired
     userMapper usermapper;
 
+    @Autowired
+    UserPortraitMapper userPortraitMapper;
+
     public Result Service(String token, JSONObject data)
     {
         Result result=new Result();
@@ -37,6 +41,8 @@ public class LicencedHouseService {
             return result;
         }
         ComQualification comQualification=new ComQualification();
+        //注册者Openid
+        comQualification.setOpenId(user.getOpenId());
         //名称
         comQualification.setbName(data.get("bName").toString());
         //地址
@@ -66,6 +72,8 @@ public class LicencedHouseService {
         //更新用户性质
         user.setStatus(1);
         usermapper.updateStatus(user);
+        //更新用户画像中的身份
+        userPortraitMapper.upadteStatus(user.getOpenId(),1);
 
         result.setCode(1);
         result.setRepMess("注册成功");

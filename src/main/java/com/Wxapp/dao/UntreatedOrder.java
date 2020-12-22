@@ -15,9 +15,12 @@ public class UntreatedOrder {
     Date ReleaseTime;
     Date ExpectTime;
     String Describe;
+    double Lon;
+    double Lat;
 
-    public UntreatedOrder(String openId, String orderId, String PAddress, String phone, String kind, int serviceType,
-                          Date releaseTime, Date expectTime, String describe) {
+    public UntreatedOrder(String openId, String orderId, String PAddress, String phone,
+                          String kind, int serviceType, Date releaseTime,
+                          Date expectTime, String describe, double lon, double lat) {
         OpenId = openId;
         OrderId = orderId;
         this.PAddress = PAddress;
@@ -27,6 +30,8 @@ public class UntreatedOrder {
         ReleaseTime = releaseTime;
         ExpectTime = expectTime;
         Describe = describe;
+        Lon = lon;
+        Lat = lat;
     }
 
     public UntreatedOrder() {
@@ -104,10 +109,27 @@ public class UntreatedOrder {
         Describe = describe;
     }
 
+    public double getLon() {
+        return Lon;
+    }
+
+    public void setLon(double lon) {
+        Lon = lon;
+    }
+
+    public double getLat() {
+        return Lat;
+    }
+
+    public void setLat(double lat) {
+        Lat = lat;
+    }
+
     @Override
     public String toString() {
         return "UntreatedOrder{" +
                 "OpenId='" + OpenId + '\'' +
+                ", OrderId='" + OrderId + '\'' +
                 ", PAddress='" + PAddress + '\'' +
                 ", Phone='" + Phone + '\'' +
                 ", Kind='" + Kind + '\'' +
@@ -115,6 +137,8 @@ public class UntreatedOrder {
                 ", ReleaseTime=" + ReleaseTime +
                 ", ExpectTime=" + ExpectTime +
                 ", Describe='" + Describe + '\'' +
+                ", Lon=" + Lon +
+                ", Lat=" + Lat +
                 '}';
     }
 }

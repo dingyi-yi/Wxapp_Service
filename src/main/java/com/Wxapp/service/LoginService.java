@@ -2,6 +2,8 @@ package com.Wxapp.service;
 
 import com.Wxapp.common.wechat;
 import com.Wxapp.dao.UserAccount;
+import com.Wxapp.dao.UserPortrait;
+import com.Wxapp.mapper.UserPortraitMapper;
 import com.Wxapp.mapper.userMapper;
 import com.Wxapp.utils.WeChatUtil;
 import com.alibaba.fastjson.JSONObject;
@@ -22,6 +24,9 @@ public class LoginService {
     @Autowired
     userMapper usermapper;
 
+    @Autowired
+    UserPortraitMapper userPortraitMapper;
+
     public JSONObject  weChatLogin(String js_code){
 
         Map<String, String> requestMap = new HashMap<>();
@@ -40,7 +45,15 @@ public class LoginService {
                 user=new UserAccount();
                 user.setOpenId(result.get("openid").toString());
                 user.setLasttime(new Date());
+                user.setStatus(0);
                 usermapper.addUser(user);
+
+                //向用户画像中，添加该用户信息
+                UserPortrait userPortrait=new UserPortrait();
+                userPortrait.setOpenId(user.getOpenId());
+                userPortrait.setStatus(0);
+                userPortraitMapper.insertUserPortrait(userPortrait);
+
                 result.put("user",user);
             }else {
                 //找到的话更新最后登陆时间

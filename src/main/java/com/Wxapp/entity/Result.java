@@ -55,6 +55,13 @@ public class Result<E> {
         ListData = listData;
     }
 
+
+    public void addJsonData(String key,Object value)
+    {
+        JsonData.put(key,value);
+    }
+
+
     @Override
     public String toString() {
         return "Result{" +
