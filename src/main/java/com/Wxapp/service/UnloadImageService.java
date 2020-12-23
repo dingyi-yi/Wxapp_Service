@@ -1,10 +1,10 @@
 package com.Wxapp.service;
 
-import com.Wxapp.dao.ActiveImage;
-import com.Wxapp.dao.OrderImage;
-import com.Wxapp.dao.UserAccount;
+import com.Wxapp.dao.*;
 import com.Wxapp.entity.Result;
 import com.Wxapp.mapper.ActiveImageMapper;
+import com.Wxapp.mapper.CaseImageMapper;
+import com.Wxapp.mapper.CommunityImageMapper;
 import com.Wxapp.mapper.OrderImageMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,11 +21,7 @@ public class UnloadImageService {
     @Autowired
     CheckTokenService checktoken=new CheckTokenService();
 
-    @Autowired
-    OrderImageMapper OrdImgMapper;
 
-    @Autowired
-    ActiveImageMapper activeImageMapper;
 
     public Result Service(String token, HttpServletRequest formData, MultipartFile file)
     {
@@ -38,7 +34,7 @@ public class UnloadImageService {
             result.setRepMess("token无效，请重新登陆");
             return result;
         }
-        //检测订单/活动编号
+        //检测编号（订单/活动/案例）
         String OAId=formData.getParameter("OAId");
         if (null==OAId) {
             result.setCode(0);
@@ -46,20 +42,35 @@ public class UnloadImageService {
             return result;
         }
 
+        boolean ret=false;
         //获取类型
         int type= Integer.parseInt(formData.getParameter("Type"));
         if (type==1)
         {//订单图片
-            orderImage(user.getOpenId(),OAId,file);
+           ret=orderImage(user.getOpenId(),OAId,file);
         }else if (type==2)
         {//活动图片
-            activityImage(user.getOpenId(),OAId,file);
+            ret=activityImage(user.getOpenId(),OAId,file);
+        }else if (type==3)
+        {//案例上传
+            ret=caseImage(user.getOpenId(),OAId,file);
+        }else if (type==4)
+        {
+            ret=communityImage(user.getOpenId(),OAId,file);
         }
 
-        result.setCode(1);
-        result.setRepMess("发布成功");
+        if (ret)
+        {
+            result.setCode(1);
+            result.setRepMess("发布成功");
+            return result;
+        }
+        result.setCode(0);
+        result.setRepMess("发布失败");
         return result;
     }
+
+
 
 
     /**
@@ -69,6 +80,8 @@ public class UnloadImageService {
      * @param file 图片
      * @return
      */
+    @Autowired
+    OrderImageMapper OrdImgMapper;
     public boolean orderImage(String OpenId, String OrderId,MultipartFile file)
     {
         if(null!=file)
@@ -82,9 +95,13 @@ public class UnloadImageService {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            return true;
         }
         return false;
     }
+
+
+
 
     /**
      * 活动上传图片
@@ -93,6 +110,8 @@ public class UnloadImageService {
      * @param file 图片
      * @return
      */
+    @Autowired
+    ActiveImageMapper activeImageMapper;
    public boolean activityImage(String OpenId,String ActiveId,MultipartFile file)
    {
        if (null!=null)
@@ -104,8 +123,62 @@ public class UnloadImageService {
            } catch (IOException e) {
                e.printStackTrace();
            }
+           return true;
        }
        return false;
    }
 
+
+
+    /**
+     * 案例图片上传
+     * @param OpenId 发布者openid
+     * @param CaseId 案例编号
+     * @param file 图片
+     * @return
+     */
+    @Autowired
+    CaseImageMapper caseImageMapper;
+   public  boolean caseImage(String OpenId,String CaseId,MultipartFile file)
+   {
+       if (null!=null)
+       {
+           try {
+               byte[] filebyte=file.getBytes();
+               CaseImage caseImage=new CaseImage(OpenId,CaseId,filebyte);
+               caseImageMapper.insertCaseImage(caseImage);
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+           return true;
+       }
+       return false;
+   }
+
+
+    /**
+     * 社区图片上传
+     * @param OpenId
+     * @param CommunityId
+     * @param file
+     * @return
+     */
+    @Autowired
+    CommunityImageMapper communityImageMapper;
+   public boolean communityImage(String OpenId,String CommunityId,MultipartFile file)
+   {
+       if (null!=null)
+       {
+           try {
+               byte[] filebyte=file.getBytes();
+               CommunityImage communityImage=new CommunityImage(OpenId,CommunityId,filebyte);
+               communityImageMapper.insertCommunityImage(communityImage);
+           } catch (IOException e) {
+               e.printStackTrace();
+           }
+           return true;
+       }
+       return false;
+
+   }
 }

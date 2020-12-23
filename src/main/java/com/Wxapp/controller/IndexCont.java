@@ -9,8 +9,7 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import javax.servlet.http.HttpServletRequest;
+
 
 
 
@@ -102,33 +101,31 @@ public class IndexCont {
      * @return
      */
     @Autowired
-    OrderInquiryService orderInquiryService=new OrderInquiryService();
+    GainOrderService gainOrderService=new GainOrderService();
     @ResponseBody
     @RequestMapping(value = "GainOrder",method = RequestMethod.POST)
     public Result GainOrder(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
-        Result result=orderInquiryService.service(token,data,2);
+        Result result=gainOrderService.service(token,data,2);
         return result;
     }
 
-    
+
     /**
-     * 上传图片
+     * 获取价格参考
      * @param token
-     * @param formData
-     * @param file
+     * @param data
      * @return
      */
     @Autowired
-    UnloadImageService UnloadService=new UnloadImageService();
+    PriceRefenceService priceRefenceService=new PriceRefenceService();
     @ResponseBody
-    @RequestMapping(value = "UnloadFile",method = RequestMethod.POST)
-    public Result UnloadFile(@RequestHeader("token") String token,HttpServletRequest formData,
-                             @RequestParam("file") MultipartFile file)
+    @RequestMapping(value = "PriceRefence",method = RequestMethod.POST)
+    public Result priceRefence(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
-        Result UnloadResult=UnloadService.Service(token,formData,file);
-        return UnloadResult;
+        Result result=priceRefenceService.service(token,data);
+        return result;
     }
-    
+
 
 }

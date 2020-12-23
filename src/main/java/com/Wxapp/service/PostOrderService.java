@@ -46,6 +46,7 @@ public class PostOrderService {
         String OrderId= UUID.randomUUID().toString();
         order.setOpenId(user.getOpenId());
         order.setOrderId(OrderId);
+
         order.setPAddress(data.get("PAddress").toString());
         order.setPhone(data.get("Phone").toString());
         order.setKind(data.get("Kind").toString());

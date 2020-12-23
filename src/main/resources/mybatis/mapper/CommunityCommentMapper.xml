@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Wxapp.mapper.CommunityCommentMapper">
+
+   <insert id="insertCommunityComment" parameterType="CommunityComment">
+       insert into CommunityComment values(#{CommunityId},#{CommentOpenId},#{CommentContent},#{CommentDate})
+   </insert>
+
+    <select id="selectByCommunityId" resultType="CommunityComment">
+        select* from CommunityComment where CommunityId=#{communityId}
+    </select>
+</mapper>

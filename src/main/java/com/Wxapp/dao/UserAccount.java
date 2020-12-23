@@ -1,7 +1,9 @@
 package com.Wxapp.dao;
 
-import java.util.Date;
+import org.springframework.stereotype.Component;
 
+import java.util.Date;
+@Component
 public class UserAccount {
 
     String OpenId;

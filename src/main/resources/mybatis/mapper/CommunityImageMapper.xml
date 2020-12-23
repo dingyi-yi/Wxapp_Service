@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Wxapp.mapper.CommunityImageMapper">
+
+    <insert id="insertCommunityImage" parameterType="CommunityImage">
+        insert into CommunityImage values(#{OpenId},#{CommunityId},#{CommunityImage})
+    </insert>
+
+    <select id="selectByCommunityId" resultType="CommunityImage">
+        select* from CommunityImage where CommunityId=#{communityId}
+    </select>
+</mapper>

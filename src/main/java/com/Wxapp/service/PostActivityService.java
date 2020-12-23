@@ -63,6 +63,7 @@ public class PostActivityService {
 
         result.setCode(1);
         result.setRepMess("发布成功");
+        result.addJsonData("Activity",activityContent);
 
         return result;
     }

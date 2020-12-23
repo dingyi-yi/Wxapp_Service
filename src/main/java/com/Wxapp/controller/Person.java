@@ -1,8 +1,8 @@
 package com.Wxapp.controller;
 
 import com.Wxapp.entity.Result;
+import com.Wxapp.service.GainOrderService;
 import com.Wxapp.service.LicencedHouseService;
-import com.Wxapp.service.OrderInquiryService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,13 +21,13 @@ public class Person {
      * @return
      */
     @Autowired
-    OrderInquiryService orderInquiryService=new OrderInquiryService();
+    GainOrderService gainOrderService=new GainOrderService();
     @ResponseBody
-    @RequestMapping(value = "OrderInquiry",method = RequestMethod.POST)
-    public Result orderInquiry(@RequestHeader("token") String token, @RequestBody JSONObject data)
+    @RequestMapping(value = "PersonOrder",method = RequestMethod.POST)
+    public Result personOrder(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
-        //Result result=orderInquiryService.Service(token,data);
-        return null;
+        Result result=gainOrderService.service(token,data,1);
+        return result;
     }
 
 
