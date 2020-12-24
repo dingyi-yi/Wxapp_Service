@@ -36,7 +36,10 @@ public class GainCommunityService {
     @Autowired
     UserMapper userMapper;
 
-    public Result service(String token, JSONObject data)
+    @Autowired
+    CollectMapper collectMapper;
+
+    public Result service(String token, JSONObject data,int way)
     {
 
         Result<CommunityEntity> result=new Result();
@@ -67,7 +70,7 @@ public class GainCommunityService {
 
         //社区内容列表
         //way=1,为时间排序
-        List<CommunityContent> communityContentList=communityMethod(communityKind,searchContent,1);
+        List<CommunityContent> communityContentList=communityMethod(communityKind,searchContent,way,user.getOpenId());
 
         //计数器，只记录20个
 
@@ -89,6 +92,11 @@ public class GainCommunityService {
             //社区点赞
             List<CommunityLike> communityLikeList=communityLikeMapper.selectByCommunityId(communityContent.getCommunityId());
 
+            //判断该用户是否为此社区点赞了
+            CommunityLike communityLike=communityLikeMapper.selectByOpenIdACommunityId(user.getOpenId(),communityContent.getCommunityId());
+            //判断用户是否收藏
+            Collect collect=collectMapper.selectByOpenIdACommunityId(user.getOpenId(),communityContent.getCommunityId());
+
             //构造社区实体类
             communityEntity.setCommunityContent(communityContent);
             communityEntity.setCommunityImageList(communityImageList);
@@ -96,6 +104,8 @@ public class GainCommunityService {
             communityEntity.setCommunityLike(communityLikeList);
             communityEntity.setCommunityWxName(userAccount.getWxName());
             communityEntity.setCommunityHeadPortrait(user.getHeadPortrait());
+            communityEntity.setLike(communityLike != null);
+            communityEntity.setCollect(collect!=null);
 
             //加入社区实体类列表
             communityEntityList.add(communityEntity);
@@ -121,11 +131,18 @@ public class GainCommunityService {
      * @param way 方式
      * @return
      */
-    public List<CommunityContent> communityMethod(String communityKind,String searchContent,int way)
+    public List<CommunityContent> communityMethod(String communityKind,String searchContent,int way,String OpenId)
     {
-        List<CommunityContent> communityContentList;
+        List<CommunityContent> communityContentList=new ArrayList<>();
 
-        communityContentList=communityContentMapper.selectByKindADescription(communityKind,searchContent);
+        if (way==1 || way==2)
+        {//页面加载时，或者查询时
+            communityContentList=communityContentMapper.selectByKindADescription(communityKind,searchContent);
+        }else if (way==3){
+            communityContentList=communityContentMapper.selectByOpenId(OpenId);
+        }
+
+
 
 
         return communityContentList;

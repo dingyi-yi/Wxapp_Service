@@ -15,3 +15,4 @@ spring:
 mybatis:
   type-aliases-package: com.Wxapp.dao
   mapper-locations: classpath:mybatis/mapper/*.xml
+

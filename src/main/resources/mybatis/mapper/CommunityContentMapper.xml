@@ -27,4 +27,8 @@
         select* from CommunityContent where CommunityId=#{communityId}
     </select>
 
+    <select id="selectByOpenId" resultType="CommunityContent">
+        select* from CommunityContent where OpenId=#{OpenId}
+    </select>
+
 </mapper>

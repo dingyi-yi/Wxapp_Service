@@ -14,15 +14,19 @@ import java.util.List;
 public class CommunityEntity {
     String CommunityWxName;
     String CommunityHeadPortrait;
+    boolean IsLike;
+    boolean IsCollect;
     CommunityContent communityContent;
     List<CommunityImage> communityImageList;
     List<CommunityComment> communityComment;
     List<CommunityLike> communityLike;
 
-    public CommunityEntity(String communityWxName, String communityHeadPortrait, CommunityContent communityContent, List<CommunityImage> communityImageList,
+    public CommunityEntity(String communityWxName, String communityHeadPortrait, boolean isLike, boolean isCollect, CommunityContent communityContent, List<CommunityImage> communityImageList,
                            List<CommunityComment> communityComment, List<CommunityLike> communityLike) {
         CommunityWxName = communityWxName;
         CommunityHeadPortrait = communityHeadPortrait;
+        IsLike = isLike;
+        IsCollect = isCollect;
         this.communityContent = communityContent;
         this.communityImageList = communityImageList;
         this.communityComment = communityComment;
@@ -46,6 +50,22 @@ public class CommunityEntity {
 
     public void setCommunityHeadPortrait(String communityHeadPortrait) {
         CommunityHeadPortrait = communityHeadPortrait;
+    }
+
+    public boolean isLike() {
+        return IsLike;
+    }
+
+    public void setLike(boolean like) {
+        IsLike = like;
+    }
+
+    public boolean isCollect() {
+        return IsCollect;
+    }
+
+    public void setCollect(boolean collect) {
+        IsCollect = collect;
     }
 
     public CommunityContent getCommunityContent() {

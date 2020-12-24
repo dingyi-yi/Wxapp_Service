@@ -1,6 +1,8 @@
 package com.Wxapp.mapper;
 
 import com.Wxapp.dao.Collect;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -8,6 +10,8 @@ import java.util.List;
  * @author ding
  * 收藏数据库接口
  */
+@Mapper
+@Repository
 public interface CollectMapper {
 
     /**

@@ -51,4 +51,13 @@ public interface CommunityContentMapper {
      */
     CommunityContent selectBycommunityId(String communityId);
 
+
+    /**
+     * 根据用户openid查询
+     * @param OpenId
+     * @return
+     */
+    List<CommunityContent> selectByOpenId(String OpenId);
+
+
 }

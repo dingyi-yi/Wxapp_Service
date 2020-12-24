@@ -29,4 +29,12 @@ public interface ActivityContentMapper {
      * @return
      */
     List<ActivityContent> selectByActiveDescription(String MaintainContent, Date date);
+
+
+    /**
+     * 查询
+     * @param OpenId
+     * @return
+     */
+    List<ActivityContent> selectByOpenId(String OpenId);
 }

@@ -11,4 +11,9 @@
     <select id="selectByCommunityId" resultType="CommunityLike">
         select* from CommunityLike where CommunityId={communityId}
     </select>
+
+    <select id="selectByOpenIdACommunityId" resultType="CommunityLike">
+        select* from CommunityLike
+        where OpenId=#{OpenId} and CommunityId=#{communityId}
+    </select>
 </mapper>

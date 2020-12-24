@@ -27,7 +27,7 @@ public class Community {
     @RequestMapping(value = "CommunityOnload",method = RequestMethod.POST)
     public Result communityOnload(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
-        Result result=gainCommunityService.service(token,data);
+        Result result=gainCommunityService.service(token,data,1);
         return  result;
     }
 
@@ -61,7 +61,7 @@ public class Community {
     @RequestMapping(value = "GainCommunity",method = RequestMethod.POST)
     public Result gainCommunity(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
-        Result result=gainCommunityService.service(token,data);
+        Result result=gainCommunityService.service(token,data,2);
         return  result;
     }
 

@@ -105,6 +105,9 @@ public class GainActivityService {
 
             activityContentList=activityContentMapper.selectByActiveDescription(MaintainContent,new Date());
 
+        }else if (way==2)
+        {//获取商户自己发布的活动
+            activityContentList=activityContentMapper.selectByOpenId(OpenId);
         }
         return activityContentList;
     }

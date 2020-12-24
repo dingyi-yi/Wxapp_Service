@@ -1,10 +1,7 @@
 package com.Wxapp.controller;
 
 import com.Wxapp.entity.Result;
-import com.Wxapp.service.GainOrderService;
-import com.Wxapp.service.LicencedHouseService;
-import com.Wxapp.service.PersonCollectService;
-import com.Wxapp.service.SetupAdressService;
+import com.Wxapp.service.*;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -82,5 +79,37 @@ public class Person {
         Result result=personCollectService.service(token,data);
         return result;
     }
+
+    /**
+     * 个人社区获取
+     */
+    @Autowired
+    GainCommunityService gainCommunityService=new GainCommunityService();
+    @ResponseBody
+    @RequestMapping(value = "PersonCommunity",method = RequestMethod.POST)
+    public Result personCommunity(@RequestHeader("token") String token, @RequestBody JSONObject data)
+    {
+        Result result=gainOrderService.service(token,data,3);
+        return result;
+    }
+
+
+    /**
+     * 个人活动获取
+     * @param token
+     * @param data
+     * @return
+     */
+    @Autowired
+    GainActivityService gainActivityService=new GainActivityService();
+    @ResponseBody
+    @RequestMapping(value = "PersonActivity",method = RequestMethod.POST)
+    public Result personActivity(@RequestHeader("token") String token, @RequestBody JSONObject data)
+    {
+        Result result=gainActivityService.service(token,data,2);
+        return result;
+    }
+
+
 
 }

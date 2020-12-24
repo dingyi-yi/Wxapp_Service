@@ -14,4 +14,7 @@
         order by StartTime desc
     </select>
 
+    <select id="selectByOpenId" resultType="ActivityContent">
+        select* from ActivityContent where OpenId=#{OpenId}
+    </select>
 </mapper>

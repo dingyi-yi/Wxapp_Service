@@ -27,4 +27,12 @@ public interface CommunityLikeMapper {
      * @return
      */
     List<CommunityLike> selectByCommunityId(String communityId);
+
+    /**
+     * 根据openid和社区编号查询
+     * @param OpenId
+     * @param communityId
+     * @return
+     */
+    CommunityLike selectByOpenIdACommunityId(String OpenId,String communityId);
 }
