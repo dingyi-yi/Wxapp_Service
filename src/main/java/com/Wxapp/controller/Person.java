@@ -3,6 +3,7 @@ package com.Wxapp.controller;
 import com.Wxapp.entity.Result;
 import com.Wxapp.service.GainOrderService;
 import com.Wxapp.service.LicencedHouseService;
+import com.Wxapp.service.PersonCollectService;
 import com.Wxapp.service.SetupAdressService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,23 @@ public class Person {
     public Result setupAdress(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
         Result result=setupAdressService.service(token,data);
+        return result;
+    }
+
+
+    /**
+     * 个人收藏
+     * @param token
+     * @param data
+     * @return
+     */
+    @Autowired
+    PersonCollectService personCollectService=new PersonCollectService();
+    @ResponseBody
+    @RequestMapping(value = "PersonCollect",method = RequestMethod.POST)
+    public Result personCollect(@RequestHeader("token") String token, @RequestBody JSONObject data)
+    {
+        Result result=personCollectService.service(token,data);
         return result;
     }
 

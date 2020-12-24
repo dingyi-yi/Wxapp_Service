@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.Wxapp.mapper.comQualificationMaper">
+<mapper namespace="com.Wxapp.mapper.ComQualificationMaper">
     <select id="QByRating" resultType="ComQualification">
         select *from comQualification where scope like '%${EleAppliance}%'  ORDER BY  Rating DESC
     </select>
@@ -33,6 +33,10 @@
         insert into comQualification values(#{OpenId},#{bName},#{bAdd},#{legalRepre},#{ship},#{LicenseNo},#{Rating},#{specialBrand},#{scope},
         #{remarks},#{lon},#{lat})
     </insert>
+
+    <select id="inquireByOpenid" resultType="ComQualification">
+        select* from comQualification where OpenId=#{OpenId}
+    </select>
 
 
 </mapper>

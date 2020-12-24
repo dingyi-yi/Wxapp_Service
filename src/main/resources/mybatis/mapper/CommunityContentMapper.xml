@@ -23,4 +23,8 @@
         update CommunityContent set LikeNumber=LikeNumber+1 where CommunityId=#{communityId}
     </select>
 
+    <select id="selectBycommunityId" resultType="CommunityContent">
+        select* from CommunityContent where CommunityId=#{communityId}
+    </select>
+
 </mapper>

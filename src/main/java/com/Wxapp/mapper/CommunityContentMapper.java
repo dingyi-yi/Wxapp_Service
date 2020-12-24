@@ -44,4 +44,11 @@ public interface CommunityContentMapper {
      */
     void updateLikeNumber(String communityId);
 
+    /**
+     * 根据社区号查询设
+     * @param communityId
+     * @return
+     */
+    CommunityContent selectBycommunityId(String communityId);
+
 }

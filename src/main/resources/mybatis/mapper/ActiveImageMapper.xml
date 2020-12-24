@@ -8,4 +8,8 @@
         insert into ActiveImage values(#{OpenId},#{OrderId},#{ActiveImage})
     </insert>
 
+    <select id="selectByActiveId" resultType="ActiveImage">
+        select* from ActiveImage where ActiveId=#{ActiveId}
+    </select>
+
 </mapper>

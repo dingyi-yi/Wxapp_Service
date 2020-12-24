@@ -7,7 +7,7 @@ import com.Wxapp.dao.UserAccount;
 import com.Wxapp.entity.Result;
 import com.Wxapp.mapper.ProcesserOrderMapper;
 import com.Wxapp.mapper.UntreatedOrderMapper;
-import com.Wxapp.mapper.comQualificationMaper;
+import com.Wxapp.mapper.ComQualificationMaper;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class AdoptOrderService {
     UntreatedOrderMapper untreatedOrderMapper;
 
     @Autowired
-    comQualificationMaper comqualificationmaper;
+    ComQualificationMaper comqualificationmaper;
 
     @Autowired
     ProcesserOrderMapper processerOrderMapper;

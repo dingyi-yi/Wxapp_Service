@@ -7,8 +7,8 @@ import java.util.Date;
 public class UserAccount {
 
     String OpenId;
-    Date lasttime;
-    String WxNmae;
+    Date LastTime;
+    String WxName;
     String HeadPortrait;
     int Status;
     int GolCoin;
@@ -17,11 +17,11 @@ public class UserAccount {
     double Lat;
 
 
-    public UserAccount(String openId, Date lasttime, String wxNmae, String headPortrait, int status,
+    public UserAccount(String openId, Date lastTime, String wxName, String headPortrait, int status,
                        int golCoin, String address, double lon, double lat) {
         OpenId = openId;
-        this.lasttime = lasttime;
-        WxNmae = wxNmae;
+        LastTime = lastTime;
+        WxName = wxName;
         HeadPortrait = headPortrait;
         Status = status;
         GolCoin = golCoin;
@@ -41,20 +41,20 @@ public class UserAccount {
         OpenId = openId;
     }
 
-    public Date getLasttime() {
-        return lasttime;
+    public Date getLastTime() {
+        return LastTime;
     }
 
-    public void setLasttime(Date lasttime) {
-        this.lasttime = lasttime;
+    public void setLastTime(Date lastTime) {
+        LastTime = lastTime;
     }
 
-    public String getWxNmae() {
-        return WxNmae;
+    public String getWxName() {
+        return WxName;
     }
 
-    public void setWxNmae(String wxNmae) {
-        WxNmae = wxNmae;
+    public void setWxName(String wxName) {
+        WxName = wxName;
     }
 
     public String getHeadPortrait() {

@@ -8,4 +8,10 @@
         insert into ActivityContent values (#{OpenId},#{ActiveId},#{ActiveName},#{StartTime},#{EndTime},#{ActiveDescription})
     </insert>
 
+    <select id="selectByActiveDescription" resultType="ActivityContent">
+        select* from ActivityContent
+        where charindex(ltrim(rtrim(MaintainContent)),ActiveDescription)>0 and EndTime>date
+        order by StartTime desc
+    </select>
+
 </mapper>

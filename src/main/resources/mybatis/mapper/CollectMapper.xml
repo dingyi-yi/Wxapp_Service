@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Wxapp.mapper.CollectMapper">
+
+   <insert id="insertCollect" parameterType="Collect">
+       insert into Collect values(#{OpenId},#{CommunityId})
+   </insert>
+
+    <select id="selectByOpenId" resultType="Collect">
+        select* from Collect where OpenId=#{OpenId}
+    </select>
+
+    <select id="selectByOpenIdACommunityId" resultType="Collect">
+        select* from Collect where OpenId=#{OpenId} and CommunityId=#{CommunityId}
+    </select>
+</mapper>

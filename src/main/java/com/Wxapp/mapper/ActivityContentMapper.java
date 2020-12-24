@@ -4,6 +4,9 @@ import com.Wxapp.dao.ActivityContent;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * @author ding
  * 活动内容数据库接口
@@ -18,4 +21,12 @@ public interface ActivityContentMapper {
      * @return
      */
     int insertActivityContent(ActivityContent activityContent);
+
+    /**
+     * 根据用户维修内容查找
+     * @param MaintainContent 维修内容
+     * @param date
+     * @return
+     */
+    List<ActivityContent> selectByActiveDescription(String MaintainContent, Date date);
 }

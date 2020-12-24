@@ -4,6 +4,8 @@ import com.Wxapp.dao.ActiveImage;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author ding
  * 活动图片表数据库接口
@@ -18,4 +20,11 @@ public interface ActiveImageMapper {
      * @return
      */
     int insertActiveImage(ActiveImage activeImage);
+
+    /**
+     * 根据活动id查询活动
+     * @param ActiveId
+     * @return
+     */
+    List<ActiveImage> selectByActiveId(String ActiveId);
 }

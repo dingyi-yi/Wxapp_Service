@@ -5,7 +5,7 @@ import com.Wxapp.dao.UserAccount;
 import com.Wxapp.dao.UserPortrait;
 import com.Wxapp.entity.OrderMaResult;
 import com.Wxapp.mapper.UserPortraitMapper;
-import com.Wxapp.mapper.comQualificationMaper;
+import com.Wxapp.mapper.ComQualificationMaper;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ import java.util.List;
 public class OrderMService {
 
     @Autowired
-    comQualificationMaper comqumapper;
+    ComQualificationMaper comqumapper;
 
     @Autowired
     CheckTokenService checktoken=new CheckTokenService();

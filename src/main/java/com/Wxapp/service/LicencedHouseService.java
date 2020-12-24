@@ -4,7 +4,7 @@ import com.Wxapp.dao.ComQualification;
 import com.Wxapp.dao.UserAccount;
 import com.Wxapp.entity.Result;
 import com.Wxapp.mapper.UserPortraitMapper;
-import com.Wxapp.mapper.comQualificationMaper;
+import com.Wxapp.mapper.ComQualificationMaper;
 import com.Wxapp.mapper.UserMapper;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class LicencedHouseService {
     CheckTokenService checkTokenService=new CheckTokenService();
 
     @Autowired
-    comQualificationMaper comQuaMaper;
+    ComQualificationMaper comQuaMaper;
 
     @Autowired
     UserMapper usermapper;
@@ -65,6 +65,7 @@ public class LicencedHouseService {
         comQualification.setLat((Double) data.get("latitude"));
         //等级，默认为3级
         comQualification.setRating(3);
+
 
         //向数据库中添加商家
         comQuaMaper.InsertCom(comQualification);

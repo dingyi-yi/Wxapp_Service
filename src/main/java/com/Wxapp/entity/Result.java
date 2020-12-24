@@ -18,6 +18,7 @@ public class Result<E> {
         RepMess = repMess;
         JsonData = jsonData;
         ListData = listData;
+
     }
 
     public Result() {
@@ -58,6 +59,10 @@ public class Result<E> {
 
     public void addJsonData(String key,Object value)
     {
+       if (JsonData==null)
+       {
+           JsonData=new JSONObject();
+       }
         JsonData.put(key,value);
     }
 

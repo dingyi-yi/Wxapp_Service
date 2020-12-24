@@ -1,6 +1,5 @@
 package com.Wxapp.controller;
 
-import com.Wxapp.entity.CaseLoadResult;
 import com.Wxapp.entity.Result;
 import com.Wxapp.service.GainCaseService;
 import com.Wxapp.service.PostCaseService;

@@ -47,7 +47,7 @@ public class CommunityLikeService {
         String communityId=data.getString("CommunityId");
 
         //构造社区点赞实体对象
-        CommunityLike communityLike=new CommunityLike(communityId,user.getWxNmae(), user.getHeadPortrait(),new Date());
+        CommunityLike communityLike=new CommunityLike(communityId,user.getWxName(), user.getHeadPortrait(),new Date());
 
         //更新社区内容点赞数
         communityContentMapper.updateLikeNumber(communityId);

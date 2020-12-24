@@ -12,13 +12,17 @@ import java.util.List;
  * 社区层，包括社区内容，图片，点赞，评论
  */
 public class CommunityEntity {
+    String CommunityWxName;
+    String CommunityHeadPortrait;
     CommunityContent communityContent;
     List<CommunityImage> communityImageList;
     List<CommunityComment> communityComment;
     List<CommunityLike> communityLike;
 
-    public CommunityEntity(CommunityContent communityContent, List<CommunityImage> communityImageList,
+    public CommunityEntity(String communityWxName, String communityHeadPortrait, CommunityContent communityContent, List<CommunityImage> communityImageList,
                            List<CommunityComment> communityComment, List<CommunityLike> communityLike) {
+        CommunityWxName = communityWxName;
+        CommunityHeadPortrait = communityHeadPortrait;
         this.communityContent = communityContent;
         this.communityImageList = communityImageList;
         this.communityComment = communityComment;
@@ -26,6 +30,22 @@ public class CommunityEntity {
     }
 
     public CommunityEntity() {
+    }
+
+    public String getCommunityWxName() {
+        return CommunityWxName;
+    }
+
+    public void setCommunityWxName(String communityWxName) {
+        CommunityWxName = communityWxName;
+    }
+
+    public String getCommunityHeadPortrait() {
+        return CommunityHeadPortrait;
+    }
+
+    public void setCommunityHeadPortrait(String communityHeadPortrait) {
+        CommunityHeadPortrait = communityHeadPortrait;
     }
 
     public CommunityContent getCommunityContent() {

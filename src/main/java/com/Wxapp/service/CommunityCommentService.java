@@ -51,7 +51,7 @@ public class CommunityCommentService {
         String commentContent=data.getString("CommentContent");
 
         //构造评论实体类
-        CommunityComment communityComment=new CommunityComment(communityId,user.getWxNmae(), user.getHeadPortrait(), commentContent,new Date());
+        CommunityComment communityComment=new CommunityComment(communityId,user.getWxName(), user.getHeadPortrait(), commentContent,new Date());
 
         //更新社区内容中评论数
         communityContentMapper.updateCommentNumber(communityId);

@@ -3,10 +3,7 @@ package com.Wxapp.service;
 import com.Wxapp.dao.*;
 import com.Wxapp.entity.CommunityEntity;
 import com.Wxapp.entity.Result;
-import com.Wxapp.mapper.CommunityCommentMapper;
-import com.Wxapp.mapper.CommunityContentMapper;
-import com.Wxapp.mapper.CommunityImageMapper;
-import com.Wxapp.mapper.CommunityLikeMapper;
+import com.Wxapp.mapper.*;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,6 +32,9 @@ public class GainCommunityService {
 
     @Autowired
     CommunityCommentMapper communityCommentMapper;
+
+    @Autowired
+    UserMapper userMapper;
 
     public Result service(String token, JSONObject data)
     {
@@ -78,6 +78,10 @@ public class GainCommunityService {
             index++;
             //社区实体类
             CommunityEntity communityEntity=new CommunityEntity();
+
+            //社区发布者
+            UserAccount userAccount=userMapper.queryUserByOpenId(communityContent.getOpenId());
+
             //社区图片
             List<CommunityImage> communityImageList=communityImageMapper.selectByCommunityId(communityContent.getCommunityId());
             //社区评论
@@ -90,6 +94,8 @@ public class GainCommunityService {
             communityEntity.setCommunityImageList(communityImageList);
             communityEntity.setCommunityComment(communityCommentList);
             communityEntity.setCommunityLike(communityLikeList);
+            communityEntity.setCommunityWxName(userAccount.getWxName());
+            communityEntity.setCommunityHeadPortrait(user.getHeadPortrait());
 
             //加入社区实体类列表
             communityEntityList.add(communityEntity);

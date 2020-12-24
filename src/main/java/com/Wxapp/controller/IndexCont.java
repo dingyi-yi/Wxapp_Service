@@ -1,7 +1,5 @@
 package com.Wxapp.controller;
 
-import com.Wxapp.dao.UserAccount;
-import com.Wxapp.entity.InLoadResult;
 import com.Wxapp.entity.OrderMaResult;
 import com.Wxapp.entity.Result;
 import com.Wxapp.service.*;
@@ -19,25 +17,20 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 public class IndexCont {
 
-    @Autowired
-    CheckTokenService checktoken=new CheckTokenService();
+
 
     /**
      * 加载页面时，向此函数发生请求
      * @param token
      * @return 页面默认数据
      */
-
+    @Autowired
+    GainActivityService gainActivityService=new GainActivityService();
     @ResponseBody
-    @RequestMapping(value = "index",method = RequestMethod.POST)
-    public InLoadResult ipageload(@RequestHeader("token")String token){
-        UserAccount user=checktoken.CheckToken(token);
-        InLoadResult loadrsult=new InLoadResult();
-        if (null==user){
-            loadrsult.setCode(0);
-            loadrsult.setRepMess("token无效，重新登陆");
-        }
-        return null;
+    @RequestMapping(value = "IndexOnload",method = RequestMethod.POST)
+    public Result indexOnload(@RequestHeader("token")String token,@RequestBody JSONObject data){
+        Result result=gainActivityService.service(token,data,1);
+        return result;
     }
 
 

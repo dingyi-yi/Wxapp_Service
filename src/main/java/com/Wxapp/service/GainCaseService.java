@@ -68,7 +68,7 @@ public class GainCaseService {
 
             caseEntity.setCaseContent(caseContent);
             caseEntity.setCaseImageList(caseImageList);
-            caseEntity.setCaseWxName(userAccount.getWxNmae());
+            caseEntity.setCaseWxName(userAccount.getWxName());
             caseEntity.setCaseHeadPortrait(user.getHeadPortrait());
 
             caseList.add(caseEntity);

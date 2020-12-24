@@ -1,13 +1,13 @@
 package com.Wxapp.controller;
 
 import com.Wxapp.entity.Result;
-import com.Wxapp.service.CommunityCommentService;
-import com.Wxapp.service.GainCommunityService;
-import com.Wxapp.service.PostCommunityService;
+import com.Wxapp.service.*;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.PreparedStatement;
 
 /**
  * @author ding
@@ -89,11 +89,30 @@ public class Community {
      * @param data
      * @return
      */
+    @Autowired
+    CommunityLikeService communityLikeService=new CommunityLikeService();
     @ResponseBody
     @RequestMapping(value = "communityLike",method = RequestMethod.POST)
     public Result communityLike(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
-        return null;
+        Result result=communityLikeService.service(token,data);
+        return result;
+    }
+
+    /**
+     * 收藏
+     * @param token
+     * @param data
+     * @return
+     */
+    @Autowired
+    CollectCommunityService collectCommunityService=new CollectCommunityService();
+    @ResponseBody
+    @RequestMapping(value = "CollectCommunity",method = RequestMethod.POST)
+    public Result collectCommunity(@RequestHeader("token") String token, @RequestBody JSONObject data)
+    {
+        Result result=collectCommunityService.service(token,data);
+        return result;
     }
 
 }
