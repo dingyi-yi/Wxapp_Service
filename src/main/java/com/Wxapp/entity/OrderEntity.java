@@ -14,9 +14,10 @@ import java.util.List;
 public class OrderEntity<E> {
 
     /**
-     * 该订单发布者
+     * 该订单发布者名称和头像
      */
-    UserAccount user;
+    String OrderWxName;
+    String OrderHeadPortrait;
 
     /**
      * 订单内容
@@ -27,13 +28,30 @@ public class OrderEntity<E> {
      */
     List<OrderImage> orderImages;
 
-    public OrderEntity(UserAccount user, E order, List<OrderImage> orderImages) {
-        this.user = user;
+    public OrderEntity(String orderWxName, String orderHeadPortrait, E order, List<OrderImage> orderImages) {
+        OrderWxName = orderWxName;
+        OrderHeadPortrait = orderHeadPortrait;
         this.order = order;
         this.orderImages = orderImages;
     }
 
     public OrderEntity() {
+    }
+
+    public String getOrderWxName() {
+        return OrderWxName;
+    }
+
+    public void setOrderWxName(String orderWxName) {
+        OrderWxName = orderWxName;
+    }
+
+    public String getOrderHeadPortrait() {
+        return OrderHeadPortrait;
+    }
+
+    public void setOrderHeadPortrait(String orderHeadPortrait) {
+        OrderHeadPortrait = orderHeadPortrait;
     }
 
     public E getOrder() {
@@ -50,13 +68,5 @@ public class OrderEntity<E> {
 
     public void setOrderImages(List<OrderImage> orderImages) {
         this.orderImages = orderImages;
-    }
-
-    public UserAccount getUser() {
-        return user;
-    }
-
-    public void setUser(UserAccount user) {
-        this.user = user;
     }
 }

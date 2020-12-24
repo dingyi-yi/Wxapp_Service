@@ -5,7 +5,7 @@ import com.Wxapp.dao.UserAccount;
 import com.Wxapp.entity.Result;
 import com.Wxapp.mapper.UserPortraitMapper;
 import com.Wxapp.mapper.comQualificationMaper;
-import com.Wxapp.mapper.userMapper;
+import com.Wxapp.mapper.UserMapper;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class LicencedHouseService {
     comQualificationMaper comQuaMaper;
 
     @Autowired
-    userMapper usermapper;
+    UserMapper usermapper;
 
     @Autowired
     UserPortraitMapper userPortraitMapper;

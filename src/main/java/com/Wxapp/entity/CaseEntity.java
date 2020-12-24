@@ -11,15 +11,35 @@ import java.util.List;
  */
 @Component
 public class CaseEntity {
+    String CaseWxName;
+    String CaseHeadPortrait;
     CaseContent caseContent;
     List<CaseImage> caseImageList;
 
-    public CaseEntity(CaseContent caseContent, List<CaseImage> caseImageList) {
+    public CaseEntity(String caseWxName, String caseHeadPortrait, CaseContent caseContent, List<CaseImage> caseImageList) {
+        CaseWxName = caseWxName;
+        CaseHeadPortrait = caseHeadPortrait;
         this.caseContent = caseContent;
         this.caseImageList = caseImageList;
     }
 
     public CaseEntity() {
+    }
+
+    public String getCaseWxName() {
+        return CaseWxName;
+    }
+
+    public void setCaseWxName(String caseWxName) {
+        CaseWxName = caseWxName;
+    }
+
+    public String getCaseHeadPortrait() {
+        return CaseHeadPortrait;
+    }
+
+    public void setCaseHeadPortrait(String caseHeadPortrait) {
+        CaseHeadPortrait = caseHeadPortrait;
     }
 
     public CaseContent getCaseContent() {

@@ -2,6 +2,7 @@ package com.Wxapp.entity;
 
 import com.Wxapp.dao.CommunityComment;
 import com.Wxapp.dao.CommunityContent;
+import com.Wxapp.dao.CommunityImage;
 import com.Wxapp.dao.CommunityLike;
 
 import java.util.List;
@@ -12,14 +13,14 @@ import java.util.List;
  */
 public class CommunityEntity {
     CommunityContent communityContent;
-    List<CommunityLike> communityLikeList;
+    List<CommunityImage> communityImageList;
     List<CommunityComment> communityComment;
     List<CommunityLike> communityLike;
 
-    public CommunityEntity(CommunityContent communityContent, List<CommunityLike> communityLikeList, List<CommunityComment>
-            communityComment, List<CommunityLike> communityLike) {
+    public CommunityEntity(CommunityContent communityContent, List<CommunityImage> communityImageList,
+                           List<CommunityComment> communityComment, List<CommunityLike> communityLike) {
         this.communityContent = communityContent;
-        this.communityLikeList = communityLikeList;
+        this.communityImageList = communityImageList;
         this.communityComment = communityComment;
         this.communityLike = communityLike;
     }
@@ -35,12 +36,12 @@ public class CommunityEntity {
         this.communityContent = communityContent;
     }
 
-    public List<CommunityLike> getCommunityLikeList() {
-        return communityLikeList;
+    public List<CommunityImage> getCommunityImageList() {
+        return communityImageList;
     }
 
-    public void setCommunityLikeList(List<CommunityLike> communityLikeList) {
-        this.communityLikeList = communityLikeList;
+    public void setCommunityImageList(List<CommunityImage> communityImageList) {
+        this.communityImageList = communityImageList;
     }
 
     public List<CommunityComment> getCommunityComment() {

@@ -1,7 +1,7 @@
 package com.Wxapp.service;
 
 import com.Wxapp.dao.UserAccount;
-import com.Wxapp.mapper.userMapper;
+import com.Wxapp.mapper.UserMapper;
 import com.Wxapp.utils.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 public class CheckTokenService {
 
     @Autowired
-    private  userMapper usermapper;
+    private UserMapper usermapper;
 
 
     public UserAccount CheckToken(String token){

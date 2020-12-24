@@ -5,7 +5,7 @@
 <mapper namespace="com.Wxapp.mapper.CommunityCommentMapper">
 
    <insert id="insertCommunityComment" parameterType="CommunityComment">
-       insert into CommunityComment values(#{CommunityId},#{CommentOpenId},#{CommentContent},#{CommentDate})
+       insert into CommunityComment values(#{CommunityId},#{CommentWxName},#{CommentHeadPortrait},#{CommentContent},#{CommentDate})
    </insert>
 
     <select id="selectByCommunityId" resultType="CommunityComment">

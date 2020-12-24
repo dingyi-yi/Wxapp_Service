@@ -45,7 +45,7 @@ public class PostCommunityService {
         String communityKind =data.getString("CommunityKind");
         //发布的内容
         String communityDescription =data.getString("CommunityDescription");
-
+        communityDescription='#'+communityDescription;
 
         /**
          * 构造订单内容实体类

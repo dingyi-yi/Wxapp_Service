@@ -9,12 +9,14 @@ import java.util.Date;
 public class CommunityLike {
 
     String CommunityId;
-    String LikeOpenId;
+    String LikeWxName;
+    String LikeHeadPortrait;
     Date LikeDate;
 
-    public CommunityLike(String communityId, String likeOpenId, Date likeDate) {
+    public CommunityLike(String communityId, String likeWxName, String likeHeadPortrait, Date likeDate) {
         CommunityId = communityId;
-        LikeOpenId = likeOpenId;
+        LikeWxName = likeWxName;
+        LikeHeadPortrait = likeHeadPortrait;
         LikeDate = likeDate;
     }
 
@@ -29,12 +31,20 @@ public class CommunityLike {
         CommunityId = communityId;
     }
 
-    public String getLikeOpenId() {
-        return LikeOpenId;
+    public String getLikeWxName() {
+        return LikeWxName;
     }
 
-    public void setLikeOpenId(String likeOpenId) {
-        LikeOpenId = likeOpenId;
+    public void setLikeWxName(String likeWxName) {
+        LikeWxName = likeWxName;
+    }
+
+    public String getLikeHeadPortrait() {
+        return LikeHeadPortrait;
+    }
+
+    public void setLikeHeadPortrait(String likeHeadPortrait) {
+        LikeHeadPortrait = likeHeadPortrait;
     }
 
     public Date getLikeDate() {

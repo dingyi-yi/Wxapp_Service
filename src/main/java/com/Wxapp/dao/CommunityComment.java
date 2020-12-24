@@ -8,13 +8,16 @@ import java.util.Date;
  */
 public class CommunityComment {
     String CommunityId;
-    String CommentOpenId;
+    String CommentWxName;
+    String CommentHeadPortrait;
     String CommentContent;
     Date CommentDate;
 
-    public CommunityComment(String communityId, String commentOpenId, String commentContent, Date commentDate) {
+    public CommunityComment(String communityId, String commentWxName,
+                            String commentHeadPortrait, String commentContent, Date commentDate) {
         CommunityId = communityId;
-        CommentOpenId = commentOpenId;
+        CommentWxName = commentWxName;
+        CommentHeadPortrait = commentHeadPortrait;
         CommentContent = commentContent;
         CommentDate = commentDate;
     }
@@ -30,12 +33,20 @@ public class CommunityComment {
         CommunityId = communityId;
     }
 
-    public String getCommentOpenId() {
-        return CommentOpenId;
+    public String getCommentWxName() {
+        return CommentWxName;
     }
 
-    public void setCommentOpenId(String commentOpenId) {
-        CommentOpenId = commentOpenId;
+    public void setCommentWxName(String commentWxName) {
+        CommentWxName = commentWxName;
+    }
+
+    public String getCommentHeadPortrait() {
+        return CommentHeadPortrait;
+    }
+
+    public void setCommentHeadPortrait(String commentHeadPortrait) {
+        CommentHeadPortrait = commentHeadPortrait;
     }
 
     public String getCommentContent() {

@@ -9,4 +9,18 @@
         #{CommentNumber},#{LikeNumber})
     </insert>
 
+    <select id="selectByKindADescription" resultType="CommunityContent">
+        select* from CommunityContent
+        where CommunityKind like '%${communityKind}}%' and charindex(ltrim(rtrim(#{searchContent})),CommunityDescription)>0
+        order by PublishDate desc
+    </select>
+
+    <select id="updateCommentNumber" parameterType="CommunityContent">
+        update CommunityContent set CommentNumber=CommentNumber+1 where CommunityId=#{communityId}
+    </select>
+
+    <select id="updateLikeNumber" parameterType="CommunityContent">
+        update CommunityContent set LikeNumber=LikeNumber+1 where CommunityId=#{communityId}
+    </select>
+
 </mapper>

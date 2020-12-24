@@ -1,10 +1,12 @@
 package com.Wxapp.service;
 
-import com.Wxapp.dao.CommunityContent;
-import com.Wxapp.dao.UserAccount;
+import com.Wxapp.dao.*;
 import com.Wxapp.entity.CommunityEntity;
 import com.Wxapp.entity.Result;
+import com.Wxapp.mapper.CommunityCommentMapper;
 import com.Wxapp.mapper.CommunityContentMapper;
+import com.Wxapp.mapper.CommunityImageMapper;
+import com.Wxapp.mapper.CommunityLikeMapper;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,15 @@ public class GainCommunityService {
     @Autowired
     CommunityContentMapper communityContentMapper;
 
+    @Autowired
+    CommunityImageMapper communityImageMapper;
+
+    @Autowired
+    CommunityLikeMapper communityLikeMapper;
+
+    @Autowired
+    CommunityCommentMapper communityCommentMapper;
+
     public Result service(String token, JSONObject data)
     {
 
@@ -39,23 +50,79 @@ public class GainCommunityService {
             return result;
         }
 
-        //社区列表
-        List<CommunityEntity> communityEntityList =new ArrayList<>();
+        /*
+        获取参数
+         */
+        //家电种类
+        String communityKind=data.getString("CommunityKind");
+        //搜索内容
+        String searchContent=data.getString("SearchContent");
+        searchContent="#"+searchContent;
 
+
+
+        //社区实体列表
+        List<CommunityEntity> communityEntityList=new ArrayList<>();
 
 
         //社区内容列表
+        //way=1,为时间排序
+        List<CommunityContent> communityContentList=communityMethod(communityKind,searchContent,1);
 
+        //计数器，只记录20个
+
+        int index=0;
+        //根据社区内容，构造社区实体类
+        for (CommunityContent communityContent:communityContentList)
+        {
+            index++;
+            //社区实体类
+            CommunityEntity communityEntity=new CommunityEntity();
+            //社区图片
+            List<CommunityImage> communityImageList=communityImageMapper.selectByCommunityId(communityContent.getCommunityId());
+            //社区评论
+            List<CommunityComment> communityCommentList=communityCommentMapper.selectByCommunityId(communityContent.getCommunityId());
+            //社区点赞
+            List<CommunityLike> communityLikeList=communityLikeMapper.selectByCommunityId(communityContent.getCommunityId());
+
+            //构造社区实体类
+            communityEntity.setCommunityContent(communityContent);
+            communityEntity.setCommunityImageList(communityImageList);
+            communityEntity.setCommunityComment(communityCommentList);
+            communityEntity.setCommunityLike(communityLikeList);
+
+            //加入社区实体类列表
+            communityEntityList.add(communityEntity);
+            if (index>20)
+            {
+                break;
+            }
+
+        }
+
+        result.setCode(1);
+        result.setRepMess("查询成功");
+        result.setListData(communityEntityList);
 
         return  result;
 
     }
 
-    public List<CommunityContent> CommunityMethod(JSONObject data)
+    /**
+     * 处理显示方式
+     * @param communityKind 种类
+     * @param searchContent 搜索内容
+     * @param way 方式
+     * @return
+     */
+    public List<CommunityContent> communityMethod(String communityKind,String searchContent,int way)
     {
         List<CommunityContent> communityContentList;
 
-        return null;
+        communityContentList=communityContentMapper.selectByKindADescription(communityKind,searchContent);
+
+
+        return communityContentList;
     }
 
 }

@@ -7,6 +7,7 @@ import com.Wxapp.entity.CaseEntity;
 import com.Wxapp.entity.Result;
 import com.Wxapp.mapper.CaseContentMapper;
 import com.Wxapp.mapper.CaseImageMapper;
+import com.Wxapp.mapper.UserMapper;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,9 @@ public class GainCaseService {
 
     @Autowired
     CaseImageMapper caseImageMapper;
+
+    @Autowired
+    UserMapper usermapper;
 
     public Result service(String token, JSONObject data)
     {
@@ -55,15 +59,19 @@ public class GainCaseService {
         {
             index++;
             //案例类
-            CaseEntity cases=new CaseEntity();
+            CaseEntity caseEntity=new CaseEntity();
 
             //该案例的所有图片
             List<CaseImage> caseImageList=caseImageMapper.selectByCaseId(caseContent.getCaseId());
+            //获取发布该案例的用户
+            UserAccount userAccount=usermapper.queryUserByOpenId(caseContent.getOpenId());
 
-            cases.setCaseContent(caseContent);
-            cases.setCaseImageList(caseImageList);
+            caseEntity.setCaseContent(caseContent);
+            caseEntity.setCaseImageList(caseImageList);
+            caseEntity.setCaseWxName(userAccount.getWxNmae());
+            caseEntity.setCaseHeadPortrait(user.getHeadPortrait());
 
-            caseList.add(cases);
+            caseList.add(caseEntity);
             if (index>20)
             {
                 break;

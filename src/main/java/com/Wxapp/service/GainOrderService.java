@@ -6,7 +6,7 @@ import com.Wxapp.entity.Result;
 import com.Wxapp.mapper.OrderImageMapper;
 import com.Wxapp.mapper.UntreatedOrderMapper;
 import com.Wxapp.mapper.comQualificationMaper;
-import com.Wxapp.mapper.userMapper;
+import com.Wxapp.mapper.UserMapper;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,7 +30,7 @@ public class GainOrderService {
     UntreatedOrderMapper untreatedOrderMapper;
 
     @Autowired
-    userMapper usermapper;
+    UserMapper usermapper;
 
     @Autowired
     comQualificationMaper comqualificationmaper;
@@ -93,7 +93,8 @@ public class GainOrderService {
             //构造订单
             untreatedOrderOrder.setOrder(order);
             untreatedOrderOrder.setOrderImages(orderImages);
-
+            untreatedOrderOrder.setOrderWxName(user.getWxNmae());
+            untreatedOrderOrder.setOrderHeadPortrait(user.getHeadPortrait());
             //将该订单加入订单列表
             orderEntityList.add(untreatedOrderOrder);
 
@@ -198,7 +199,8 @@ public class GainOrderService {
             //构造订单
             untreatedOrderOrder.setOrder(order);
             untreatedOrderOrder.setOrderImages(orderImages);
-            untreatedOrderOrder.setUser(orderuser);
+            untreatedOrderOrder.setOrderWxName(orderuser.getWxNmae());
+            untreatedOrderOrder.setOrderHeadPortrait(orderuser.getHeadPortrait());
 
             //该订单的内容，图片，发布者已经构造完成，将该订单添加入列表
             orderEntityList.add(untreatedOrderOrder);

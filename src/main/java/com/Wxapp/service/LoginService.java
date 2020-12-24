@@ -4,7 +4,7 @@ import com.Wxapp.common.wechat;
 import com.Wxapp.dao.UserAccount;
 import com.Wxapp.dao.UserPortrait;
 import com.Wxapp.mapper.UserPortraitMapper;
-import com.Wxapp.mapper.userMapper;
+import com.Wxapp.mapper.UserMapper;
 import com.Wxapp.utils.WeChatUtil;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,20 +22,20 @@ public class LoginService {
     private RestTemplate restTemplate=new RestTemplate();
 
     @Autowired
-    userMapper usermapper;
+    UserMapper usermapper;
 
     @Autowired
     UserPortraitMapper userPortraitMapper;
 
-    public JSONObject  weChatLogin(String js_code){
+    public JSONObject  weChatLogin(String code,String nickName,String avatarUrl){
 
         Map<String, String> requestMap = new HashMap<>();
         requestMap.put("appid", wc.AppID);
         requestMap.put("secret", wc.AppSecret);
-        requestMap.put("code", js_code);
+        requestMap.put("code", code);
 
         //使用工具类，向微信官方索要openId
-        JSONObject result=WeChatUtil.GetRequest(js_code,requestMap);
+        JSONObject result=WeChatUtil.GetRequest(code,requestMap);
 
         if (null==result.get("errcode")){
             //去检查数据库中是否有该openid
@@ -44,7 +44,12 @@ public class LoginService {
                 // 不存在，就是第一次登录：新建用户信息
                 user=new UserAccount();
                 user.setOpenId(result.get("openid").toString());
+                //最后登陆时间
                 user.setLasttime(new Date());
+                //名称
+                user.setWxNmae(nickName);
+                //头像
+                user.setHeadPortrait(avatarUrl);
                 user.setStatus(0);
                 usermapper.addUser(user);
 

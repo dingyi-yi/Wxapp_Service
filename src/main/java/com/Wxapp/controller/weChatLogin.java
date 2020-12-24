@@ -20,13 +20,13 @@ public class weChatLogin {
 
     @ResponseBody
     @RequestMapping(value = "login",method = RequestMethod.POST)
-    public SingleResult<String> Login(String code){
+    public SingleResult<String> Login(String code,String nickName,String avatarUrl){
 
         SingleResult<String> result = new SingleResult<String>();
 
 
         //调用service.loginservice.wechatlogin 去检查openid
-        JSONObject loginresult=service.weChatLogin(code);
+        JSONObject loginresult=service.weChatLogin(code,nickName,avatarUrl);
 
         if(null==loginresult.get("user")){
             result.setCode(0);
