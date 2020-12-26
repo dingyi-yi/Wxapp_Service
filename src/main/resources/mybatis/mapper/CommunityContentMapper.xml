@@ -11,7 +11,7 @@
 
     <select id="selectByKindADescription" resultType="CommunityContent">
         select* from CommunityContent
-        where CommunityKind like '%${communityKind}}%' and charindex(ltrim(rtrim(#{searchContent})),CommunityDescription)>0
+        where CommunityKind like '%${communityKind}%' and charindex(ltrim(rtrim(#{searchContent})),CommunityDescription)>0
         order by PublishDate desc
     </select>
 

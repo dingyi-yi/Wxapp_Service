@@ -4,6 +4,7 @@ import com.Wxapp.dao.CommunityContent;
 import com.Wxapp.dao.UserAccount;
 import com.Wxapp.entity.Result;
 import com.Wxapp.mapper.CommunityContentMapper;
+import com.Wxapp.mapper.UserMapper;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class PostCommunityService {
 
     @Autowired
     CommunityContentMapper communityContentMapper;
+
+    @Autowired
+    UserMapper userMapper;
 
     public Result service(String token, JSONObject data)
     {
@@ -56,10 +60,10 @@ public class PostCommunityService {
         CommunityContent communityContent=new CommunityContent(user.getOpenId(),communityId,communityKind,
                 communityDescription,new Date(),0,0);
 
-        /**
-         * 写入数据库
-         */
+        //写入数据库
         communityContentMapper.insertCommunityContent(communityContent);
+        userMapper.upadteGolCoin(user.getOpenId(),5);
+
 
         result.setCode(1);
         result.setRepMess("发布成功");

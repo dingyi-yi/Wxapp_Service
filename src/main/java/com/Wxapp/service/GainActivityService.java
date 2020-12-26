@@ -75,7 +75,8 @@ public class GainActivityService {
             activityEntity.setFirmName(comQualification.getbName());
 
             //获取活动的海报
-            List<ActiveImage> activeImageList=activeImageMapper.selectByActiveId(activityContent.getActiveId());
+           // List<ActiveImage> activeImageList=activeImageMapper.selectByActiveId(activityContent.getActiveId());
+            List<ActiveImage> activeImageList=new ArrayList<>();
             activityEntity.setActiveImageList(activeImageList);
 
             activityEntityList.add(activityEntity);
@@ -94,13 +95,17 @@ public class GainActivityService {
         List<ActivityContent> activityContentList = new ArrayList<>();
         if (way==1)
         {//index页面加载时，根据用户喜欢加载
+            String MaintainContent="#";
             //获取用户画像
             UserPortrait userPortrait= userPortraitMapper.selectByOpenid(OpenId);
-            //获取用户维修内容
-            String MaintainContent=userPortrait.getMaintainContent();
-            if (MaintainContent==null)
+            if (userPortrait!=null)
             {
-                MaintainContent=" ";
+                //获取用户维修内容
+                MaintainContent=userPortrait.getMaintainContent();
+                if (MaintainContent==null)
+                {
+                    MaintainContent="#";
+                }
             }
 
             activityContentList=activityContentMapper.selectByActiveDescription(MaintainContent,new Date());

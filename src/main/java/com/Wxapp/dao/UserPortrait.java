@@ -12,26 +12,24 @@ import java.util.Date;
 public class UserPortrait {
     String OpenId;
     int Status;
-    int GolCoin;
     int Maintain;
     Date MaintainDate;
     String MaintainContent;
     int MaintainNumber;
 
-    public UserPortrait(String openId, int status, int golCoin, int maintain,
+    public UserPortrait(String openId, int status, int maintain,
                         Date maintainDate, String maintainContent, int maintainNumber) {
         OpenId = openId;
         Status = status;
-        GolCoin = golCoin;
         Maintain = maintain;
         MaintainDate = maintainDate;
         MaintainContent = maintainContent;
         MaintainNumber = maintainNumber;
     }
 
+
     public UserPortrait() {
     }
-
 
     public String getOpenId() {
         return OpenId;
@@ -47,14 +45,6 @@ public class UserPortrait {
 
     public void setStatus(int status) {
         Status = status;
-    }
-
-    public int getGolCoin() {
-        return GolCoin;
-    }
-
-    public void setGolCoin(int golCoin) {
-        GolCoin = golCoin;
     }
 
     public int getMaintain() {

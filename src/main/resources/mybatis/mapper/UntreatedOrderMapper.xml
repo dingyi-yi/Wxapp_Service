@@ -26,5 +26,20 @@
         select *from UntreatedOrder where charindex(ltrim(rtrim(Kind)),#{scope})>0 and ExpectTime>#{date} order by ReleaseTime desc
     </select>
 
+    <select id="inquireByOrderId" resultType="UntreatedOrder">
+        select* from UntreatedOrder where OrderId=#{orderId}
+    </select>
+
+    <delete id="deleteByOpenId" parameterType="UntreatedOrder">
+        delete from UntreatedOrder where OpenId=#{OpenId}
+    </delete>
+
+    <delete id="deleteByOrderId" parameterType="UntreatedOrder">
+        delete from UntreatedOrder where OrderId=#{OrderId}
+    </delete>
+
+    <select id="inquireByDistance" resultType="UntreatedOrder">
+        select *from UntreatedOrder where charindex(ltrim(rtrim(Kind)),#{scope})>0 and ExpectTime>#{date} order by ReleaseTime desc
+    </select>
 
 </mapper>

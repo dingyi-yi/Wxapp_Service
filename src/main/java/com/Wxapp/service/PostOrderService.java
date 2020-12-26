@@ -50,7 +50,7 @@ public class PostOrderService {
         order.setPAddress(data.get("PAddress").toString());
         order.setPhone(data.get("Phone").toString());
         order.setKind(data.get("Kind").toString());
-        order.setServiceType((Integer) data.get("ServiceType"));
+        order.setServiceType((int) data.get("ServiceType"));
         order.setDescribe(data.get("Describe").toString());
         //订单发布时间
         Date ReleaseTime=new Date();

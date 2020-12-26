@@ -11,4 +11,5 @@
     <select id="selectByCommunityId" resultType="CommunityComment">
         select* from CommunityComment where CommunityId=#{communityId}
     </select>
+
 </mapper>

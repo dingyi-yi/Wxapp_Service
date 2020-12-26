@@ -92,7 +92,7 @@ public class Community {
     @Autowired
     CommunityLikeService communityLikeService=new CommunityLikeService();
     @ResponseBody
-    @RequestMapping(value = "communityLike",method = RequestMethod.POST)
+    @RequestMapping(value = "CommunityLike",method = RequestMethod.POST)
     public Result communityLike(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
         Result result=communityLikeService.service(token,data);

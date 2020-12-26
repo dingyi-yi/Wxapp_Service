@@ -33,7 +33,7 @@ public class GainCaseService {
     @Autowired
     UserMapper usermapper;
 
-    public Result service(String token, JSONObject data)
+    public Result service(String token, JSONObject data,int way)
     {
 
         //订单列表
@@ -50,8 +50,8 @@ public class GainCaseService {
             return result;
         }
 
-        //订单内容表
-        List<CaseContent> caseContentList=caseMethod(data);
+        //案例内容
+        List<CaseContent> caseContentList=caseMethod(data,way);
 
 
         int index=0;
@@ -62,7 +62,9 @@ public class GainCaseService {
             CaseEntity caseEntity=new CaseEntity();
 
             //该案例的所有图片
-            List<CaseImage> caseImageList=caseImageMapper.selectByCaseId(caseContent.getCaseId());
+            //List<CaseImage> caseImageList=caseImageMapper.selectByCaseId(caseContent.getCaseId());
+            List<CaseImage> caseImageList=new ArrayList<>();
+
             //获取发布该案例的用户
             UserAccount userAccount=usermapper.queryUserByOpenId(caseContent.getOpenId());
 
@@ -93,11 +95,20 @@ public class GainCaseService {
      * @param data
      * @return
      */
-    public List<CaseContent> caseMethod(JSONObject data)
+    public List<CaseContent> caseMethod(JSONObject data,int way)
     {
+        List<CaseContent> caseContentList=new ArrayList<>();
+        if (way==1)
+        {
+            caseContentList=caseContentMapper.selectAll();
+            return caseContentList;
+        }else {
+            //获取参数，家电类型
+            String appliancesType=data.getString("AppliancesType");
+            caseContentList=caseContentMapper.selectByAppliancesType(appliancesType);
+            return caseContentList;
+        }
 
-        List<CaseContent> caseContentList=caseContentMapper.selectAll();
-        return caseContentList;
     }
 
 }

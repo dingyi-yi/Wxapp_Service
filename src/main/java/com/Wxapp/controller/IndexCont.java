@@ -8,15 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-
-
-
 /**
- * 首页（index）内发生的请求
+ * @author ding
+ * index页面发送的请求
  */
 @Controller
 public class IndexCont {
-
 
 
     /**
@@ -66,10 +63,13 @@ public class IndexCont {
      * 发布活动，不包含图片
      * @return
      */
+    @Autowired
+    PostActivityService postActivityService=new PostActivityService();
     @ResponseBody
     @RequestMapping(value = "PostActivity",method = RequestMethod.POST)
     public Result postActivity(@RequestHeader("token") String token, @RequestBody JSONObject data){
-        return null;
+        Result result=postActivityService.service(token,data);
+        return result;
     }
 
 

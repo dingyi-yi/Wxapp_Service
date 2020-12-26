@@ -2,6 +2,7 @@ package com.Wxapp.service;
 
 import com.Wxapp.common.wechat;
 import com.Wxapp.dao.UserAccount;
+import com.Wxapp.dao.UserPortrait;
 import com.Wxapp.entity.Result;
 import com.Wxapp.mapper.UserPortraitMapper;
 import com.Wxapp.mapper.UserMapper;
@@ -11,11 +12,15 @@ import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * @author ding
+ * 登陆服务层
+ */
 @Service
 public class LoginService {
 
@@ -72,7 +77,15 @@ public class LoginService {
            user.setHeadPortrait(avatarUrl);
            user.setStatus(0);
            user.setAddress(" ");
+
+           //个人用户画像
+           UserPortrait userPortrait=new UserPortrait();
+           userPortrait.setOpenId(user.getOpenId());
+           userPortrait.setStatus(0);
+
+           //写入数据库
            usermapper.addUser(user);
+           userPortraitMapper.insertUserPortrait(userPortrait);
 
        } else {
            //找到的话更新最后登陆时间

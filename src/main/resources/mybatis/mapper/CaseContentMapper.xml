@@ -14,6 +14,6 @@
     </select>
 
     <select id="selectByAppliancesType" resultType="CaseContent">
-        select* from CaseContent where AppliancesType like '%${appliancesType}%}'
+        select* from CaseContent where AppliancesType like '%${appliancesType}%'
     </select>
 </mapper>

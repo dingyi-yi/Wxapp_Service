@@ -8,12 +8,14 @@ import java.util.Date;
  */
 public class CommunityLike {
 
+    String OpenId;
     String CommunityId;
     String LikeWxName;
     String LikeHeadPortrait;
     Date LikeDate;
 
-    public CommunityLike(String communityId, String likeWxName, String likeHeadPortrait, Date likeDate) {
+    public CommunityLike(String openId, String communityId, String likeWxName, String likeHeadPortrait, Date likeDate) {
+        OpenId = openId;
         CommunityId = communityId;
         LikeWxName = likeWxName;
         LikeHeadPortrait = likeHeadPortrait;
@@ -21,6 +23,14 @@ public class CommunityLike {
     }
 
     public CommunityLike() {
+    }
+
+    public String getOpenId() {
+        return OpenId;
+    }
+
+    public void setOpenId(String openId) {
+        OpenId = openId;
     }
 
     public String getCommunityId() {

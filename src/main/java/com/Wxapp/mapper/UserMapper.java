@@ -43,4 +43,12 @@ public interface UserMapper {
      * @param lat 纬度
      */
     void updateAdress(String openId,String adress,double lon,double lat);
+
+
+    /**
+     * 更新用户金币数
+     * @param OpenId
+     * @param AddNum 要添加的金币数量
+     */
+    void upadteGolCoin(String OpenId,int AddNum);
 }

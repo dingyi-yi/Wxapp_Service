@@ -3,6 +3,7 @@ package com.Wxapp.service;
 import com.Wxapp.dao.ComQualification;
 import com.Wxapp.dao.UserAccount;
 import com.Wxapp.entity.Result;
+import com.Wxapp.mapper.UntreatedOrderMapper;
 import com.Wxapp.mapper.UserPortraitMapper;
 import com.Wxapp.mapper.ComQualificationMaper;
 import com.Wxapp.mapper.UserMapper;
@@ -21,10 +22,13 @@ public class LicencedHouseService {
     CheckTokenService checkTokenService=new CheckTokenService();
 
     @Autowired
-    ComQualificationMaper comQuaMaper;
+    ComQualificationMaper comQualificationMaper;
 
     @Autowired
     UserMapper usermapper;
+
+    @Autowired
+    UntreatedOrderMapper untreatedOrderMapper;
 
     @Autowired
     UserPortraitMapper userPortraitMapper;
@@ -40,6 +44,16 @@ public class LicencedHouseService {
             result.setRepMess("token无效，请重新登陆");
             return result;
         }
+
+        if (user.getStatus()==1)
+        {
+            result.setCode(0);
+            result.setRepMess("已经注册");
+            return result;
+        }
+
+
+
         ComQualification comQualification=new ComQualification();
         //注册者Openid
         comQualification.setOpenId(user.getOpenId());
@@ -48,7 +62,7 @@ public class LicencedHouseService {
         //地址
         comQualification.setbAdd(data.get("bAdd").toString());
         //法人代表
-        comQualification.setLegalRepre(data.get("legalRepre").toString());
+        comQualification.setLegalRepre(data.get("LegalRepre").toString());
         //公司性质
         comQualification.setShip(data.get("ship").toString());
         //许可证编号
@@ -68,10 +82,16 @@ public class LicencedHouseService {
 
 
         //向数据库中添加商家
-        comQuaMaper.InsertCom(comQualification);
+        comQualificationMaper.InsertCom(comQualification);
+
+        //删除个人订单
+        untreatedOrderMapper.deleteByOrderId(user.getOpenId());
+
+
 
         //更新用户性质
         user.setStatus(1);
+        user.setGolCoin(0);
         usermapper.updateStatus(user);
         //更新用户画像中的身份
         userPortraitMapper.upadteStatus(user.getOpenId(),1);

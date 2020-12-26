@@ -10,7 +10,7 @@
 
     <select id="selectByActiveDescription" resultType="ActivityContent">
         select* from ActivityContent
-        where charindex(ltrim(rtrim(MaintainContent)),ActiveDescription)>0 and EndTime>date
+        where charindex(ltrim(rtrim(#{MaintainContent})),ActiveDescription)>0 and EndTime>#{date}
         order by StartTime desc
     </select>
 

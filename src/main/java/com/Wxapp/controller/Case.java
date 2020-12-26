@@ -23,7 +23,7 @@ public class Case {
     @RequestMapping(value = "CaseLoad",method = RequestMethod.POST)
     public Result caseLoad(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
-        Result result=gainCaseService.service(token,data);
+        Result result=gainCaseService.service(token,data,1);
         return result;
     }
 
@@ -56,7 +56,7 @@ public class Case {
     @RequestMapping(value = "GainCase",method = RequestMethod.POST)
     public Result gainCase(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
-        Result result=gainCaseService.service(token,data);
+        Result result=gainCaseService.service(token,data,2);
         return result;
     }
 

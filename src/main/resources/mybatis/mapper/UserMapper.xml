@@ -16,10 +16,17 @@
     </update>
 
     <update id="updateStatus" parameterType="UserAccount">
-        update WxUser set Status=#{Status} where Openid=#{OpenId}
+        update WxUser set Status=#{Status},GolCoin=#{GolCoin}
+        where Openid=#{OpenId}
     </update>
 
     <update id="updateAdress" parameterType="UserAccount">
-        update WxUser set Address=#{adress} and Lon=#{lon} and lat=#{Lat} where OpenId=#{openId}
+        update WxUser set Address=#{adress} , Lon=#{lon} , Lat=#{lat} where OpenId=#{openId}
     </update>
+
+    <update id="upadteGolCoin" parameterType="UserAccount">
+        update WxUser set GolCoin=GolCoin+#{AddNum} where OpenId=#{OpenId}
+    </update>
+
+
 </mapper>

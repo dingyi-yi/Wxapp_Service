@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * 检测token,
+ * @author ding
  */
 @Service
 public class CheckTokenService {

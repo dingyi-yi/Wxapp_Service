@@ -56,11 +56,12 @@ public class GainCommunityService {
         /*
         获取参数
          */
-        //家电种类
+        //社区类型
         String communityKind=data.getString("CommunityKind");
+        communityKind=communityKind==null?"":communityKind;
         //搜索内容
         String searchContent=data.getString("SearchContent");
-        searchContent="#"+searchContent;
+        searchContent=searchContent==null?"#":searchContent;
 
 
 
@@ -86,7 +87,9 @@ public class GainCommunityService {
             UserAccount userAccount=userMapper.queryUserByOpenId(communityContent.getOpenId());
 
             //社区图片
-            List<CommunityImage> communityImageList=communityImageMapper.selectByCommunityId(communityContent.getCommunityId());
+            //List<CommunityImage> communityImageList=communityImageMapper.selectByCommunityId(communityContent.getCommunityId());
+            List<CommunityImage> communityImageList=new ArrayList<>();
+
             //社区评论
             List<CommunityComment> communityCommentList=communityCommentMapper.selectByCommunityId(communityContent.getCommunityId());
             //社区点赞
@@ -137,13 +140,17 @@ public class GainCommunityService {
 
         if (way==1 || way==2)
         {//页面加载时，或者查询时
+            System.out.println(communityKind);
+            System.out.println(searchContent);
             communityContentList=communityContentMapper.selectByKindADescription(communityKind,searchContent);
+
+            return communityContentList;
+
         }else if (way==3){
             communityContentList=communityContentMapper.selectByOpenId(OpenId);
+            return communityContentList;
+
         }
-
-
-
 
         return communityContentList;
     }

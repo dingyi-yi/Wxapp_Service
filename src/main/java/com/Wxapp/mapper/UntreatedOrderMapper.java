@@ -81,4 +81,12 @@ public interface UntreatedOrderMapper {
     int deleteByOrderId(String OrderId);
 
 
+    /**
+     * 删除某用户的所有订单
+     * @param OpenId
+     */
+    void deleteByOpenId(String OpenId);
+
+
+
 }

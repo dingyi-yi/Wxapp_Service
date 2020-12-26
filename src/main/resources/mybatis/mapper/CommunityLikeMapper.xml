@@ -5,11 +5,11 @@
 <mapper namespace="com.Wxapp.mapper.CommunityLikeMapper">
 
     <insert id="insertCommunityLike" parameterType="CommunityLike">
-        insert into CommunityLike values(#{CommunityId},#{LikeWxName},#{LikeHeadPortrait},#{LikeDate})
+        insert into CommunityLike values(#{OpenId},#{CommunityId},#{LikeWxName},#{LikeHeadPortrait},#{LikeDate})
     </insert>
 
     <select id="selectByCommunityId" resultType="CommunityLike">
-        select* from CommunityLike where CommunityId={communityId}
+        select* from CommunityLike where CommunityId=#{communityId}
     </select>
 
     <select id="selectByOpenIdACommunityId" resultType="CommunityLike">

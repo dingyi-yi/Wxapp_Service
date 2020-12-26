@@ -4,6 +4,7 @@ import com.Wxapp.dao.CaseContent;
 import com.Wxapp.dao.UserAccount;
 import com.Wxapp.entity.Result;
 import com.Wxapp.mapper.CaseContentMapper;
+import com.Wxapp.mapper.UserMapper;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,9 @@ public class PostCaseService {
 
     @Autowired
     CaseContentMapper caseContentMapper;
+
+    @Autowired
+    UserMapper userMapper;
 
     public Result service(String token, JSONObject data){
 
@@ -60,6 +64,8 @@ public class PostCaseService {
 
         //写入数据库
         caseContentMapper.insertCaseContent(caseContent);
+        userMapper.upadteGolCoin(user.getOpenId(),10);
+
 
         result.addJsonData("Case",caseContent);
         result.setCode(1);

@@ -54,7 +54,7 @@ public class PostActivityService {
         Date endTime=data.getDate("EndTime");
         //活动描述
         String activeDescription=data.getString("ActiveDescription");
-
+        activeDescription="#"+activeDescription;
         //构造活动内容对象
         ActivityContent activityContent=new ActivityContent(user.getOpenId(),activeId,activeName,startTime,endTime,activeDescription);
 

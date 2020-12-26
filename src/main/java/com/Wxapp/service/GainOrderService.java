@@ -84,12 +84,13 @@ public class GainOrderService {
          */
         //查询订单内容
         List<UntreatedOrder> untreatedOrders=untreatedOrderMapper.InquireOrder(user.getOpenId());
+
         for (UntreatedOrder order:untreatedOrders)
         {
             OrderEntity<UntreatedOrder> untreatedOrderOrder=new OrderEntity<UntreatedOrder>();
             //查询该订单所有的图片
-            List<OrderImage> orderImages=orderImageMapper.inquireOrderImage(order.getOrderId());
-
+            // List<OrderImage> orderImages=orderImageMapper.inquireOrderImage(order.getOrderId());
+            List<OrderImage> orderImages=new ArrayList<>();
             //构造订单
             untreatedOrderOrder.setOrder(order);
             untreatedOrderOrder.setOrderImages(orderImages);
@@ -119,11 +120,12 @@ public class GainOrderService {
         //获取该商家的信息
         ComQualification com=comqualificationmaper.inquireByOpenid(user.getOpenId());
         if (com==null)
-        {
+         {
             return null;
         }
         //获取商家维修范围
         String scope=com.getScope();
+        scope=scope==null?"冰箱，空调，洗衣机，微波炉，移动电话":scope;
 
         //订单列表
         List<OrderEntity> orderEntityList;
@@ -131,30 +133,35 @@ public class GainOrderService {
         String time ="Time", distance ="Distance", searchCriteria ="SearchCriteria";
 
         //订单查询方式
-        String displayMode =data.get("displayMode").toString();
+        String displayMode =data.get("DisplayMode").toString();
 
         if (time.equals(displayMode))
         { //根据时间优先
             orderEntityList =adoptOrderSearch(scope,0,null,0,0);
+            return orderEntityList;
         }else if (distance.equals(displayMode))
         {//
             //获取经纬度
             double Lon= (double) data.get("Longitude");
             double Lat= (double) data.get("Latitude");
             orderEntityList =adoptOrderSearch(scope,1,null,Lon,Lat);
+            return orderEntityList;
         }else if (searchCriteria.equals(displayMode))
         {//搜索某一种家电的订单
             //获取搜索内容
             String storetype=data.get("SearchContent").toString();
+
             orderEntityList =adoptOrderSearch(scope,2,storetype,0,0);
+
+            return orderEntityList;
 
         }else {
             //默认查询所有的
             orderEntityList =adoptOrderSearch(scope,3,null,0,0);
+            return orderEntityList;
         }
 
 
-        return  null;
     }
 
 
@@ -192,13 +199,14 @@ public class GainOrderService {
             //订单实体类
             OrderEntity<UntreatedOrder> untreatedOrderOrder=new OrderEntity<UntreatedOrder>();
             //查询该订单所有的图片
-            List<OrderImage> orderImages=orderImageMapper.inquireOrderImage(order.getOrderId());
+           // List<OrderImage> orderImages=orderImageMapper.inquireOrderImage(order.getOrderId());
+            List<OrderImage> orderImageList=new ArrayList<>();
             //查询该订单的发布用户
             UserAccount orderuser=usermapper.queryUserByOpenId(order.getOpenId());
 
             //构造订单
             untreatedOrderOrder.setOrder(order);
-            untreatedOrderOrder.setOrderImages(orderImages);
+            untreatedOrderOrder.setOrderImages(orderImageList);
             untreatedOrderOrder.setOrderWxName(orderuser.getWxName());
             untreatedOrderOrder.setOrderHeadPortrait(orderuser.getHeadPortrait());
 
