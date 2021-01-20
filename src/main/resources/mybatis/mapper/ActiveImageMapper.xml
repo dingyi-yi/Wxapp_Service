@@ -5,7 +5,7 @@
 <mapper namespace="com.Wxapp.mapper.ActiveImageMapper">
 
     <insert id="insertActiveImage" parameterType="ActiveImage">
-        insert into ActiveImage values(#{OpenId},#{OrderId},#{ActiveImage})
+        insert into ActiveImage values(#{OpenId},#{ActiveId},#{ActiveImage})
     </insert>
 
     <select id="selectByActiveId" resultType="ActiveImage">

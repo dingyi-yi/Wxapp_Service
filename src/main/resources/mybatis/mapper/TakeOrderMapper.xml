@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Wxapp.mapper.TakeOrderMapper">
+
+
+    <insert id="insertTakeOrder" parameterType="com.Wxapp.dao.orderdao.TakeOrder">
+        insert into TakeOrder values(#{OrderId},#{MerchantId},#{ExpectedPrice},#{ExpectedScheme})
+    </insert>
+    <delete id="deleteUnnecessary">
+        delete from TakeOrder where OrderId=#{OrderId} and MerchantId!=#{MerchantId}
+    </delete>
+
+
+    <select id="selectByOrderId" resultType="com.Wxapp.dao.orderdao.TakeOrder">
+        select* from TakeOrder where OrderId=#{orderId}
+    </select>
+
+    <select id="selectByMerchantId" resultType="com.Wxapp.dao.orderdao.TakeOrder">
+        select* from TakeOrder where MerchantId=#{MerchantId}
+    </select>
+    <select id="selectByOrderIdAMerchantId" resultType="com.Wxapp.dao.orderdao.TakeOrder">
+        select* from TakeOrder where OrderId=#{OrderId} and MerchantId=#{MerchantId}
+    </select>
+
+
+</mapper>

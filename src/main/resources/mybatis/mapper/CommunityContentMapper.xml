@@ -5,7 +5,7 @@
 <mapper namespace="com.Wxapp.mapper.CommunityContentMapper">
 
     <insert id="insertCommunityContent" parameterType="CommunityContent">
-        insert into CommunityContent values(#{OpenId},#{CommunityId},#{CommunityKind},#{CommunityDescription},#{PublishData},
+        insert into CommunityContent values(#{OpenId},#{CommunityId},#{CommunityKind},#{CommunityDescription},#{PublishDate},
         #{CommentNumber},#{LikeNumber})
     </insert>
 

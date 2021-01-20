@@ -13,7 +13,6 @@
     </select>
 
     <select id="selectByOpenIdACommunityId" resultType="CommunityLike">
-        select* from CommunityLike
-        where OpenId=#{OpenId} and CommunityId=#{communityId}
+        select* from CommunityLike where OpenId=#{OpenId} and CommunityId=#{communityId}
     </select>
 </mapper>

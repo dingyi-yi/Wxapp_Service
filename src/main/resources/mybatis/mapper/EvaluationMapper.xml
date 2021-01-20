@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.Wxapp.mapper.EvaluationMapper">
+
+
+    <insert id="insertEvaluationMapper" parameterType="com.Wxapp.dao.merchantdao.Evaluation">
+        insert into Evaluation values(#{OrderId},#{OpenId},#{MerchantId},#{ComprehensiveGrade},#{AttitudeGrade},#{QualityGrade},#{DurationGrade},#{EvaluationText})
+    </insert>
+    <select id="selectByOpenIdAOrderId" resultType="com.Wxapp.dao.merchantdao.Evaluation">
+        select* from Evaluation where OpenId=#{OpenId} and OrderId=#{OrderId}
+    </select>
+    <select id="selectByMerchantIdAOrderId" resultType="com.Wxapp.dao.merchantdao.Evaluation">
+        select* from Evaluation where MerchantId=#{MerchantId} and OrderId=#{OrderId}
+    </select>
+</mapper>

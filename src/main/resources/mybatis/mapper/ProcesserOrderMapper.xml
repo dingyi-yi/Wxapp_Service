@@ -4,12 +4,19 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Wxapp.mapper.ProcesserOrderMapper">
 
-    <insert id="insertProcesserOrder" parameterType="ProcesserOrder">
+    <insert id="insertProcesserOrder" parameterType="com.Wxapp.dao.orderdao.ProcesserOrder">
         insert into ProcesserOrder values(#{OpenId},#{OrderId},#{PAddress},#{Phone},#{Kind},
-        #{ServiceType},#{ReleaseTime},#{EndTime},#{Describe},#{Lon},#{Lat},#{Handler},#{GiveMark},#{Appraise},#{State})
+        #{ServiceType},#{ReleaseTime},#{EndTime},#{Describe},#{Lon},#{Lat},#{Handler},#{State})
     </insert>
-
-
+    <select id="selectByOpenId" resultType="com.Wxapp.dao.orderdao.ProcesserOrder">
+        select* from ProcesserOrder where OpenId=#{OpenId}
+    </select>
+    <select id="selectByHandler" resultType="com.Wxapp.dao.orderdao.ProcesserOrder">
+        select* from ProcesserOrder where Handler=#{Handler}
+    </select>
+    <select id="selecteByOpenIdAOrderId" resultType="com.Wxapp.dao.orderdao.ProcesserOrder">
+        select* from ProcesserOrder where OpenId=#{OpenId} and OrderId=#{OrderId}
+    </select>
 
 
 </mapper>

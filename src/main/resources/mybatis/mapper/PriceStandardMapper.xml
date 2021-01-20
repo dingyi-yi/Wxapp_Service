@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.Wxapp.mapper.PriceStandardMapper">
 
-    <select id="searchByAppliancesType" resultType="PriceStandard">
-        select* from PriceStandard where AppliancesType like '%${appliancesType}%}'
+    <select id="searchByAppliancesType" resultType="com.Wxapp.dao.merchantdao.PriceStandard">
+        select* from PriceStandard where AppliancesType like '%${appliancesType}%'
     </select>
 </mapper>
