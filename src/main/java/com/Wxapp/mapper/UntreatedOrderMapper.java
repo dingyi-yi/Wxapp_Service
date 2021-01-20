@@ -1,6 +1,6 @@
 package com.Wxapp.mapper;
 
-import com.Wxapp.dao.UntreatedOrder;
+import com.Wxapp.dao.orderdao.UntreatedOrder;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

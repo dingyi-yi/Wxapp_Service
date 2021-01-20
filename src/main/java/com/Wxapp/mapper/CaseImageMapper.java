@@ -1,6 +1,6 @@
 package com.Wxapp.mapper;
 
-import com.Wxapp.dao.CaseImage;
+import com.Wxapp.dao.casesharedao.CaseImage;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

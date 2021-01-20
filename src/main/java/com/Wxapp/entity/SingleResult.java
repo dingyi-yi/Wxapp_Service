@@ -1,6 +1,6 @@
 package com.Wxapp.entity;
 
-import com.Wxapp.dao.UserAccount;
+import com.Wxapp.dao.userdao.UserAccount;
 
 public class SingleResult<S> {
    int Code;

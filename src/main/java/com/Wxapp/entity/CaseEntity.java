@@ -1,7 +1,7 @@
 package com.Wxapp.entity;
 
-import com.Wxapp.dao.CaseContent;
-import com.Wxapp.dao.CaseImage;
+import com.Wxapp.dao.casesharedao.CaseContent;
+import com.Wxapp.dao.casesharedao.CaseImage;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

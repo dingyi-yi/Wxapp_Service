@@ -2,7 +2,9 @@ package com.Wxapp.controller;
 
 import com.Wxapp.entity.OrderMaResult;
 import com.Wxapp.entity.Result;
-import com.Wxapp.service.*;
+import com.Wxapp.service.activityservice.GainActivityService;
+import com.Wxapp.service.activityservice.PostActivityService;
+import com.Wxapp.service.orderservice.*;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -78,11 +80,11 @@ public class IndexCont {
      * @return
      */
     @Autowired
-    AdoptOrderService adoptOrderService=new AdoptOrderService();
+    TakeOrderService takeOrderService =new TakeOrderService();
     @ResponseBody
     @RequestMapping(value = "AdoptOrder",method = RequestMethod.POST)
     public Result adoptOrder(@RequestHeader("token") String token, @RequestBody JSONObject data){
-        Result result=adoptOrderService.service(token,data);
+        Result result= takeOrderService.service(token,data);
         return result;
     }
 

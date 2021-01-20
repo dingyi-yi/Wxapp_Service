@@ -1,13 +1,11 @@
 package com.Wxapp.controller;
 
 import com.Wxapp.entity.Result;
-import com.Wxapp.service.*;
+import com.Wxapp.service.communtityservice.*;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.sql.PreparedStatement;
 
 /**
  * @author ding

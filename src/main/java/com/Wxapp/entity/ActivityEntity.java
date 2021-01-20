@@ -1,7 +1,7 @@
 package com.Wxapp.entity;
 
-import com.Wxapp.dao.ActiveImage;
-import com.Wxapp.dao.ActivityContent;
+import com.Wxapp.dao.activitydao.ActiveImage;
+import com.Wxapp.dao.activitydao.ActivityContent;
 
 import java.util.List;
 
@@ -22,6 +22,11 @@ public class ActivityEntity {
     String TradeMark;
 
     /**
+     * 活动地址
+     */
+    String ActivityAdress;
+
+    /**
      * 活动内容
      */
     ActivityContent activityContent;
@@ -31,10 +36,11 @@ public class ActivityEntity {
      */
     List<ActiveImage> activeImageList;
 
-    public ActivityEntity(String firmName, String tradeMark, ActivityContent activityContent,
-                          List<ActiveImage> activeImageList) {
+    public ActivityEntity(String firmName, String tradeMark, String activityAdress,
+                          ActivityContent activityContent, List<ActiveImage> activeImageList) {
         FirmName = firmName;
         TradeMark = tradeMark;
+        ActivityAdress = activityAdress;
         this.activityContent = activityContent;
         this.activeImageList = activeImageList;
     }
@@ -56,6 +62,14 @@ public class ActivityEntity {
 
     public void setTradeMark(String tradeMark) {
         TradeMark = tradeMark;
+    }
+
+    public String getActivityAdress() {
+        return ActivityAdress;
+    }
+
+    public void setActivityAdress(String activityAdress) {
+        ActivityAdress = activityAdress;
     }
 
     public ActivityContent getActivityContent() {

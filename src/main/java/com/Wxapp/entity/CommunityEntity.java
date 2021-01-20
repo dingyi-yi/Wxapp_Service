@@ -1,9 +1,9 @@
 package com.Wxapp.entity;
 
-import com.Wxapp.dao.CommunityComment;
-import com.Wxapp.dao.CommunityContent;
-import com.Wxapp.dao.CommunityImage;
-import com.Wxapp.dao.CommunityLike;
+import com.Wxapp.dao.communtitydao.CommunityComment;
+import com.Wxapp.dao.communtitydao.CommunityContent;
+import com.Wxapp.dao.communtitydao.CommunityImage;
+import com.Wxapp.dao.communtitydao.CommunityLike;
 
 import java.util.List;
 

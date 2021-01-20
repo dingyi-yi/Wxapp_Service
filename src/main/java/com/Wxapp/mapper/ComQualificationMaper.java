@@ -1,6 +1,6 @@
 package com.Wxapp.mapper;
 
-import com.Wxapp.dao.ComQualification;
+import com.Wxapp.dao.merchantdao.ComQualification;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

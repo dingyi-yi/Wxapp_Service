@@ -1,17 +1,14 @@
 package com.Wxapp.service;
 
-import com.Wxapp.controller.Community;
-import com.Wxapp.dao.ActiveImage;
-import com.Wxapp.dao.CommunityImage;
-import com.Wxapp.dao.OrderImage;
-import com.Wxapp.dao.UserAccount;
+import com.Wxapp.dao.activitydao.ActiveImage;
+import com.Wxapp.dao.casesharedao.CaseImage;
+import com.Wxapp.dao.communtitydao.CommunityImage;
+import com.Wxapp.dao.orderdao.OrderImage;
+import com.Wxapp.dao.userdao.UserAccount;
 import com.Wxapp.entity.Result;
-import com.Wxapp.mapper.ActiveImageMapper;
-import com.Wxapp.mapper.CommunityImageMapper;
-import com.Wxapp.mapper.OrderImageMapper;
-import com.Wxapp.mapper.UntreatedOrderMapper;
+import com.Wxapp.mapper.*;
+import com.Wxapp.service.userservice.CheckTokenService;
 import com.alibaba.fastjson.JSONObject;
-import org.springframework.beans.factory.NoUniqueBeanDefinitionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -55,6 +52,9 @@ public class DownloadFileService {
         {
             result.setListData(activeImage(OAId));
         }else if(way==3)
+        {
+            result.setListData(caseImage(OAId));
+        }else if (way==4)
         {
             result.setListData(communityImage(OAId));
         }
@@ -106,4 +106,16 @@ public class DownloadFileService {
         List<CommunityImage> communityImageList=communityImageMapper.selectByCommunityId(CommunityId);
         return communityImageList;
     }
+
+
+
+    @Autowired
+    CaseImageMapper caseImageMapper;
+    public  List<CaseImage> caseImage(String CaseId)
+    {
+        List<CaseImage> caseImageList=caseImageMapper.selectByCaseId(CaseId);
+        return caseImageList;
+    }
+
+
 }

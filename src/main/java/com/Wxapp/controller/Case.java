@@ -1,8 +1,8 @@
 package com.Wxapp.controller;
 
 import com.Wxapp.entity.Result;
-import com.Wxapp.service.GainCaseService;
-import com.Wxapp.service.PostCaseService;
+import com.Wxapp.service.caseservice.GainCaseService;
+import com.Wxapp.service.caseservice.PostCaseService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

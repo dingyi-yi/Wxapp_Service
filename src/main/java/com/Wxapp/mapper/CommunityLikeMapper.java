@@ -1,6 +1,6 @@
 package com.Wxapp.mapper;
 
-import com.Wxapp.dao.CommunityLike;
+import com.Wxapp.dao.communtitydao.CommunityLike;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

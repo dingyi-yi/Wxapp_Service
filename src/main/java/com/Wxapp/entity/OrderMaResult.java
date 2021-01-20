@@ -1,6 +1,6 @@
 package com.Wxapp.entity;
 
-import com.Wxapp.dao.ComQualification;
+import com.Wxapp.dao.merchantdao.ComQualification;
 
 import java.util.List;
 

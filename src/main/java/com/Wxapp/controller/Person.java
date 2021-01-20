@@ -1,7 +1,15 @@
 package com.Wxapp.controller;
 
+import com.Wxapp.dao.merchantdao.Evaluation;
 import com.Wxapp.entity.Result;
-import com.Wxapp.service.*;
+import com.Wxapp.service.activityservice.GainActivityService;
+import com.Wxapp.service.communtityservice.GainCommunityService;
+import com.Wxapp.service.merchantdao.ChoseCompanyService;
+import com.Wxapp.service.merchantdao.EvaluationService;
+import com.Wxapp.service.merchantdao.LicencedHouseService;
+import com.Wxapp.service.orderservice.GainOrderService;
+import com.Wxapp.service.userservice.PersonCollectService;
+import com.Wxapp.service.userservice.SetupAdressService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -89,7 +97,7 @@ public class Person {
     @RequestMapping(value = "PersonCommunity",method = RequestMethod.POST)
     public Result personCommunity(@RequestHeader("token") String token, @RequestBody JSONObject data)
     {
-        Result result=gainOrderService.service(token,data,3);
+        Result result= gainCommunityService.service(token,data,3);
         return result;
     }
 
@@ -110,6 +118,32 @@ public class Person {
         return result;
     }
 
+
+    /**
+     * 用户选择商家
+     * @param token
+     * @param data
+     * @return
+     */
+    @Autowired
+    ChoseCompanyService choseCompanyService=new ChoseCompanyService();
+    @ResponseBody
+    @RequestMapping(value = "ChoseCompany",method = RequestMethod.POST)
+    public  Result choseCompany(@RequestHeader("token") String token, @RequestBody JSONObject data)
+    {
+        Result result=choseCompanyService.service(token,data);
+        return result;
+    }
+
+
+    @Autowired
+    EvaluationService evaluationService=new EvaluationService();
+    @ResponseBody
+    @RequestMapping(value = "Evaluation",method = RequestMethod.POST)
+    public  Result evaluation(@RequestHeader("token") String token, @RequestBody JSONObject data)
+    {
+        return evaluationService.service(token,data);
+    }
 
 
 }

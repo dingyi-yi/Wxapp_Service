@@ -1,6 +1,6 @@
 package com.Wxapp.mapper;
 
-import com.Wxapp.dao.PriceStandard;
+import com.Wxapp.dao.merchantdao.PriceStandard;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

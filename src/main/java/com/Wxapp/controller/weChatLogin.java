@@ -3,7 +3,7 @@ package com.Wxapp.controller;
 
 
 import com.Wxapp.entity.Result;
-import com.Wxapp.service.LoginService;
+import com.Wxapp.service.userservice.LoginService;
 import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

@@ -1,11 +1,16 @@
 package com.Wxapp.service;
 
-import com.Wxapp.dao.*;
+import com.Wxapp.dao.activitydao.ActiveImage;
+import com.Wxapp.dao.casesharedao.CaseImage;
+import com.Wxapp.dao.communtitydao.CommunityImage;
+import com.Wxapp.dao.orderdao.OrderImage;
+import com.Wxapp.dao.userdao.UserAccount;
 import com.Wxapp.entity.Result;
 import com.Wxapp.mapper.ActiveImageMapper;
 import com.Wxapp.mapper.CaseImageMapper;
 import com.Wxapp.mapper.CommunityImageMapper;
 import com.Wxapp.mapper.OrderImageMapper;
+import com.Wxapp.service.userservice.CheckTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -84,7 +89,7 @@ public class UnloadImageService {
     OrderImageMapper OrdImgMapper;
     public boolean orderImage(String OpenId, String OrderId,MultipartFile file)
     {
-        if(null!=file)
+        if(file!=null)
         {
             try {
                 //获取文件字节
@@ -114,7 +119,7 @@ public class UnloadImageService {
     ActiveImageMapper activeImageMapper;
    public boolean activityImage(String OpenId,String ActiveId,MultipartFile file)
    {
-       if (null!=null)
+       if (file!=null)
        {
            try {
                byte[] filebyte=file.getBytes();
@@ -141,7 +146,7 @@ public class UnloadImageService {
     CaseImageMapper caseImageMapper;
    public  boolean caseImage(String OpenId,String CaseId,MultipartFile file)
    {
-       if (null!=null)
+       if (file!=null)
        {
            try {
                byte[] filebyte=file.getBytes();
@@ -167,7 +172,7 @@ public class UnloadImageService {
     CommunityImageMapper communityImageMapper;
    public boolean communityImage(String OpenId,String CommunityId,MultipartFile file)
    {
-       if (null!=null)
+       if (file!=null)
        {
            try {
                byte[] filebyte=file.getBytes();
